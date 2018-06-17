@@ -1,15 +1,18 @@
 function thing() {
-	var matches = $.getJSON('https://world-cup-json.herokuapp.com/matches');
-	var matchesObj = JSON.parse(matches);
+	var matches = $.getJSON('https://world-cup-json.herokuapp.com/matches'
+							, function(data) {
+								matchesObj = data;
+							});
+
 
 	var selections = $.getJSON('./selections.json');
-	var selectionsObj = JSON.parse(selections);
+
 
 	var res = alasql(
 		'SELECT * \
-		FROM ? selectionsObj \
-		JOIN ? matchesObj ON selections.matches.home_team = matchesObj.home_team\
-		and ? matchesObj.matches.away_team = selectionsObj.away_team',[matchesObj, selectionsObj]);
+		FROM ? selections \
+		JOIN ? matches ON selections.matches.home_team = matches.home_team\
+		and ? matches.matches.away_team = selections.away_team',[matches, selections]);
 
 		document.getElementById("res").textContent = JSON.stringify(res);
  }	
