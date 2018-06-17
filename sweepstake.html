@@ -37,7 +37,7 @@
 			<h1> Inventory List </h1>
 			<script>
 			$(document).ready(function () {
-				$.getJSON('https://api.myjson.com/bins/13k7zq',
+				$.getJSON('./selections.json',
 				function (json) {
 					var tr;
 					for (var i = 0; i < json.length; i++) {
