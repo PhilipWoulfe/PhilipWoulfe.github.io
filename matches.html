@@ -31,12 +31,12 @@
 			<h1> Inventory List </h1>
 			<script>
 			$(document).ready(function () {
-				$.getJSON('http://worldcup.sfg.io/matches',
+				$.getJSON('https://world-cup-json.herokuapp.com/matches',
 				function (json) {
 					var tr;
 					for (var i = 0; i < json.length; i++) {
 						tr = $('<tr/>');
-						tr.append("<td>" + json[i].playerName + "</td>");
+						tr.append("<td>" + json[i].datetime + "</td>");
 						tr.append("<td>" + json[i].status + "</td>");
 						tr.append("<td>" + json[i].home_team.country + "</td>");
 						tr.append("<td>" + json[i].home_team.goals + " - " + json[i].away_team.goals +"</td>");
