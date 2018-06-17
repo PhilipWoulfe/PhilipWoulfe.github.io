@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="main.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	<script lang="javascript" src="./lib/js-xls/xlsx.full.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/alasql@0.4"></script>
+	<script src="script.js"></script>
     
 	
 	<script>
@@ -36,21 +37,23 @@
 	  <div class="container">
 			<h1> Inventory List </h1>
 			<script>
-			$(document).ready(function () {
-				$.getJSON('./selections.json',
-				function (json) {
-					var tr;
-					for (var i = 0; i < json.length; i++) {
-						tr = $('<tr/>');
-						tr.append("<td>" + json[i].playerName + "</td>");
-						<!-- tr.append("<td>" + json[i].status + "</td>"); -->
-						<!-- tr.append("<td>" + json[i].home_team.country + "</td>"); -->
-						<!-- tr.append("<td>" + json[i].home_team.goals + " - " + json[i].away_team.goals +"</td>"); -->
-						<!-- tr.append("<td>" + json[i].away_team.country + "</td>"); -->
-						<!-- tr.append("<td>" + json[i].winner + "</td>"); -->
-						$('#table').append(tr);
-					}
-				});
+			$(document).ready(
+				thing();
+				<!-- function () { -->
+				<!-- $.getJSON('./selections.json', -->
+				<!-- function (json) { -->
+					<!-- var tr; -->
+					<!-- for (var i = 0; i < json.length; i++) { -->
+						<!-- tr = $('<tr/>'); -->
+						<!-- tr.append("<td>" + json[i].playerName + "</td>"); -->
+						tr.append("<td>" + json[i].status + "</td>");
+						tr.append("<td>" + json[i].home_team.country + "</td>");
+						tr.append("<td>" + json[i].home_team.goals + " - " + json[i].away_team.goals +"</td>");
+						tr.append("<td>" + json[i].away_team.country + "</td>");
+						tr.append("<td>" + json[i].winner + "</td>");
+						<!-- $('#table').append(tr); -->
+					<!-- } -->
+				<!-- }); -->
 			});
 
 			</script>
@@ -67,6 +70,8 @@
 			  </tr>
 
 			</table>
+			
+			<p id="res"></p>
 	  </div>
 	</div>
 	
