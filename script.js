@@ -1,9 +1,9 @@
 function thing() {
 	var matches = $.getJSON('https://world-cup-json.herokuapp.com/matches'
 							, function(data) {
-								matchesObj = data;
+								var matchesObj = JSON.parse(data);
 							});
-
+	// var matchesObj = JSON.parse(matches);
 
 	var selections = $.getJSON('./selections.json');
 
