@@ -8,7 +8,7 @@ function getActualResults(callback) {
 
 function thing(function(name) {
 	console.log(name)
-}
+});
 
 	// var selections = $.getJSON('./selections.json');
 
