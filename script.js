@@ -8,13 +8,20 @@ function thing() {
 	var selections = $.getJSON('./selections.json');
 
 
-	var res = alasql(
-		'SELECT * \
-		FROM ? selections \
-		JOIN ? matches ON selections.matches.home_team = matches.home_team\
-		and ? matches.matches.away_team = selections.away_team',[matches, selections]);
+	// var res = alasql('SELECT * FROM ? selections \
+						// JOIN ? matches ON selections.matches.home_team = matches.home_team \
+						// and ? matches.matches.away_team = selections.away_team' \
+						// ,[matches, selections]
+					// );
 
+	var res = alasql('SELECT * FROM ? matches' 
+						,[matches]
+					);
+					
+					
 		document.getElementById("res").textContent = JSON.stringify(res);
+		
+		// https://stackoverflow.com/questions/42298265/alasql-nested-arrays
  }	
 function getWorldCupScores() {
 	$.getJSON('https://world-cup-json.herokuapp.com/matches',
