@@ -1,0 +1,70 @@
+<html>
+
+  <head>
+    <link href="https://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+    <link rel="stylesheet" href="main.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    
+  </head>
+
+  <body>
+    <div class="nav">
+      <div class="container">
+        <ul class="pull-left">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./matches.html">Match Results</a></li>
+		  <li><a href="./sweepstake.html">Sweepstakes Table</a></li>
+        </ul>
+        <ul class="pull-right">
+          <li><a href="#">Sign Up</a></li>
+          <li><a href="#">Log In</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+	
+	<div class="learn-more">
+	  <div class="container">
+			<h1> Inventory List </h1>
+			<script>
+			$(document).ready(function () {
+				$.getJSON('http://worldcup.sfg.io/matches',
+				function (json) {
+					var tr;
+					for (var i = 0; i < json.length; i++) {
+						tr = $('<tr/>');
+						tr.append("<td>" + json[i].playerName + "</td>");
+						tr.append("<td>" + json[i].status + "</td>");
+						tr.append("<td>" + json[i].home_team.country + "</td>");
+						tr.append("<td>" + json[i].home_team.goals + " - " + json[i].away_team.goals +"</td>");
+						tr.append("<td>" + json[i].away_team.country + "</td>");
+						tr.append("<td>" + json[i].winner + "</td>");
+						$('#table').append(tr);
+					}
+				});
+			});
+
+			</script>
+
+			<table id= "table">
+			  <tr>
+				<th> Date</th>
+				<th> Status</th>
+				<th> Home Team</th>
+				<th> Home Team Goals</th>
+				<th> Away Team</th>
+				<th> Away Team Goals</th>
+				<th> Winner</th>
+			  </tr>
+
+			</table>
+	  </div>
+	</div>
+
+
+	
+  </body>
+</html>
