@@ -95,3 +95,7 @@ table {
 th {
     height: 50px;
 }
+
+#score {
+	text-align: center;
+}
