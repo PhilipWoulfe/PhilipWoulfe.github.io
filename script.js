@@ -155,7 +155,7 @@ function getWorldCupScores() {
 			tr.append("<td>" + new Date(json[i].datetime).toLocaleString('en-GB') + "</td>");
 			tr.append("<td>" + json[i].status + "</td>");
 			tr.append("<td>" + json[i].home_team.country + "</td>");
-			tr.append("<td>" + json[i].home_team.goals + " - " + json[i].away_team.goals +"</td>");
+			tr.append("<td id='score'>" + json[i].home_team.goals + " - " + json[i].away_team.goals +"</td>");
 			tr.append("<td>" + json[i].away_team.country + "</td>");
 			tr.append("<td>" + json[i].winner + "</td>");
 			$('#table').append(tr);
