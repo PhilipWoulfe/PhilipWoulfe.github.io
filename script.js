@@ -14,7 +14,7 @@ function getActualResults() {
 			matchesObj = data;
 			console.log(matchesObj);
 			
-			var selections = $.getJSON('https://api.myjson.com/bins/19x5i6'
+			var selections = $.getJSON('./script.js'
 				, function(data) {
 				//console.log(data);
 				})
@@ -28,12 +28,17 @@ function getActualResults() {
 						//console.log({name: selectionsObj[s].playerName, score:0});
 						// if (s > 1)
 							// break;
-						resultArr.push({name: selectionsObj[s].playerName, score:0})
+						var tmp = {name: selectionsObj[s].playerName, score:0};
+						resultArr.push(tmp)
 						//console.log(resultArr);
 						
 						for (var m in selectionsObj[s].matches) {
+							// var foundMatch = false;
 							// console.log(selectionsObj[s].matches[m]);
+
 							for (var am in matchesObj) {
+								// if (foundMatch)
+									// continue;
 								if (matchesObj[am].status != 'completed')
 									continue;
 								
@@ -44,13 +49,17 @@ function getActualResults() {
 								//console.log('Matches WInner' +matchesObj[am].winner );
 								//console.log('Selections Winner' + selectionsObj[s].matches.winner);
 								
-								
-								
+								var awayTeam = matchesObj[am].away_team.country;
+								var homeTeam = matchesObj[am].home_team.country;
+								var away = selectionsObj[s].matches[m].awayTeam;
+								var home = selectionsObj[s].matches[m].homeTeam;
+								var winner = matchesObj[am].winner ==  selectionsObj[s].matches[m].winner;
 								
 								if (matchesObj[am].away_team.country ==  selectionsObj[s].matches[m].awayTeam
 									&& matchesObj[am].home_team.country ==  selectionsObj[s].matches[m].homeTeam
 									&& matchesObj[am].winner ==  selectionsObj[s].matches[m].winner)
 									resultArr[s].score += POINTS_FOR_MATCH_WIN;
+									// foundMatch = true;
 									
 							}
 						}

@@ -59,7 +59,7 @@
     {
       "homeTeam": "Iran",
       "awayTeam": "Portugal",
-      "winner": "None"
+      "winner": "Portugal"
     },
     {
       "homeTeam": "France",
@@ -89,7 +89,7 @@
     {
       "homeTeam": "Australia",
       "awayTeam": "Peru",
-      "winner": "None"
+      "winner": "Australia"
     },
     {
       "homeTeam": "Argentina",
@@ -158,11 +158,11 @@
     },
     {
       "homeTeam": "Sweden",
-      "awayTeam": "South Korea",
+      "awayTeam": "Korea Republic",
       "winner": "Draw"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Mexico",
       "winner": "Draw"
     },
@@ -177,7 +177,7 @@
       "winner": "Mexico"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Germany",
       "winner": "Germany"
     },
@@ -412,11 +412,11 @@
     },
     {
       "homeTeam": "Sweden",
-      "awayTeam": "South Korea",
+      "awayTeam": "Korea Republic",
       "winner": "Sweden"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Mexico",
       "winner": "Draw"
     },
@@ -431,7 +431,7 @@
       "winner": "Draw"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Germany",
       "winner": "Germany"
     },
@@ -666,11 +666,11 @@
     },
     {
       "homeTeam": "Sweden",
-      "awayTeam": "South Korea",
+      "awayTeam": "Korea Republic",
       "winner": "Sweden"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Mexico",
       "winner": "Mexico"
     },
@@ -685,7 +685,7 @@
       "winner": "Sweden"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Germany",
       "winner": "Germany"
     },
@@ -920,11 +920,11 @@
     },
     {
       "homeTeam": "Sweden",
-      "awayTeam": "South Korea",
+      "awayTeam": "Korea Republic",
       "winner": "Sweden"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Mexico",
       "winner": "Mexico"
     },
@@ -939,7 +939,7 @@
       "winner": "Mexico"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Germany",
       "winner": "Germany"
     },
@@ -1174,11 +1174,11 @@
     },
     {
       "homeTeam": "Sweden",
-      "awayTeam": "South Korea",
+      "awayTeam": "Korea Republic",
       "winner": "Sweden"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Mexico",
       "winner": "Mexico"
     },
@@ -1193,7 +1193,7 @@
       "winner": "Mexico"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Germany",
       "winner": "Germany"
     },
@@ -1428,11 +1428,11 @@
     },
     {
       "homeTeam": "Sweden",
-      "awayTeam": "South Korea",
+      "awayTeam": "Korea Republic",
       "winner": "Draw"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Mexico",
       "winner": "Mexico"
     },
@@ -1447,7 +1447,7 @@
       "winner": "Mexico"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Germany",
       "winner": "Germany"
     },
@@ -1682,11 +1682,11 @@
     },
     {
       "homeTeam": "Sweden",
-      "awayTeam": "South Korea",
+      "awayTeam": "Korea Republic",
       "winner": "Sweden"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Mexico",
       "winner": "Mexico"
     },
@@ -1701,7 +1701,7 @@
       "winner": "Draw"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Germany",
       "winner": "Germany"
     },
@@ -1936,11 +1936,11 @@
     },
     {
       "homeTeam": "Sweden",
-      "awayTeam": "South Korea",
+      "awayTeam": "Korea Republic",
       "winner": "Sweden"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Mexico",
       "winner": "Mexico"
     },
@@ -1955,7 +1955,7 @@
       "winner": "Sweden"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Germany",
       "winner": "Germany"
     },
@@ -2190,11 +2190,11 @@
     },
     {
       "homeTeam": "Sweden",
-      "awayTeam": "South Korea",
+      "awayTeam": "Korea Republic",
       "winner": "Sweden"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Mexico",
       "winner": "Mexico"
     },
@@ -2209,7 +2209,7 @@
       "winner": "Mexico"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Germany",
       "winner": "Germany"
     },
@@ -2444,11 +2444,11 @@
     },
     {
       "homeTeam": "Sweden",
-      "awayTeam": "South Korea",
+      "awayTeam": "Korea Republic",
       "winner": "Sweden"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Mexico",
       "winner": "Mexico"
     },
@@ -2463,7 +2463,7 @@
       "winner": "Sweden"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Germany",
       "winner": "Germany"
     },
@@ -2698,11 +2698,11 @@
     },
     {
       "homeTeam": "Sweden",
-      "awayTeam": "South Korea",
+      "awayTeam": "Korea Republic",
       "winner": "Sweden"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Mexico",
       "winner": "Mexico"
     },
@@ -2717,7 +2717,7 @@
       "winner": "Mexico"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Germany",
       "winner": "Germany"
     },
@@ -2952,11 +2952,11 @@
     },
     {
       "homeTeam": "Sweden",
-      "awayTeam": "South Korea",
+      "awayTeam": "Korea Republic",
       "winner": "Draw"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Mexico",
       "winner": "Draw"
     },
@@ -2971,7 +2971,7 @@
       "winner": "Mexico"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Germany",
       "winner": "Germany"
     },
@@ -3206,11 +3206,11 @@
     },
     {
       "homeTeam": "Sweden",
-      "awayTeam": "South Korea",
-      "winner": "South Korea"
+      "awayTeam": "Korea Republic",
+      "winner": "Korea Republic"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Mexico",
       "winner": "Mexico"
     },
@@ -3225,7 +3225,7 @@
       "winner": "Sweden"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Germany",
       "winner": "Germany"
     },
@@ -3460,11 +3460,11 @@
     },
     {
       "homeTeam": "Sweden",
-      "awayTeam": "South Korea",
+      "awayTeam": "Korea Republic",
       "winner": "Sweden"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Mexico",
       "winner": "Mexico"
     },
@@ -3479,7 +3479,7 @@
       "winner": "Sweden"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Germany",
       "winner": "Germany"
     },
@@ -3714,11 +3714,11 @@
     },
     {
       "homeTeam": "Sweden",
-      "awayTeam": "South Korea",
+      "awayTeam": "Korea Republic",
       "winner": "Sweden"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Mexico",
       "winner": "Mexico"
     },
@@ -3733,7 +3733,7 @@
       "winner": "Draw"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Germany",
       "winner": "Germany"
     },
@@ -3968,11 +3968,11 @@
     },
     {
       "homeTeam": "Sweden",
-      "awayTeam": "South Korea",
+      "awayTeam": "Korea Republic",
       "winner": "Sweden"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Mexico",
       "winner": "Mexico"
     },
@@ -3987,7 +3987,7 @@
       "winner": "Draw"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Germany",
       "winner": "Germany"
     },
@@ -4222,11 +4222,11 @@
     },
     {
       "homeTeam": "Sweden",
-      "awayTeam": "South Korea",
+      "awayTeam": "Korea Republic",
       "winner": "Sweden"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Mexico",
       "winner": "Mexico"
     },
@@ -4241,7 +4241,7 @@
       "winner": "Mexico"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Germany",
       "winner": "Germany"
     },
@@ -4476,11 +4476,11 @@
     },
     {
       "homeTeam": "Sweden",
-      "awayTeam": "South Korea",
+      "awayTeam": "Korea Republic",
       "winner": "Sweden"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Mexico",
       "winner": "Mexico"
     },
@@ -4495,7 +4495,7 @@
       "winner": "Mexico"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Germany",
       "winner": "Germany"
     },
@@ -4730,11 +4730,11 @@
     },
     {
       "homeTeam": "Sweden",
-      "awayTeam": "South Korea",
+      "awayTeam": "Korea Republic",
       "winner": "Draw"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Mexico",
       "winner": "Mexico"
     },
@@ -4749,7 +4749,7 @@
       "winner": "Draw"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Germany",
       "winner": "Draw"
     },
@@ -4984,11 +4984,11 @@
     },
     {
       "homeTeam": "Sweden",
-      "awayTeam": "South Korea",
+      "awayTeam": "Korea Republic",
       "winner": "Sweden"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Mexico",
       "winner": "Draw"
     },
@@ -5003,7 +5003,7 @@
       "winner": "Mexico"
     },
     {
-      "homeTeam": "South Korea",
+      "homeTeam": "Korea Republic",
       "awayTeam": "Germany",
       "winner": "Germany"
     },
