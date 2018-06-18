@@ -152,7 +152,7 @@ function getWorldCupScores() {
 		var tr;
 		for (var i = 0; i < json.length; i++) {
 			tr = $('<tr/>');
-			tr.append("<td>" + new Date(json[i].datetime) + "</td>");
+			tr.append("<td>" + new Date(json[i].datetime).toLocaleString('en-GB') + "</td>");
 			tr.append("<td>" + json[i].status + "</td>");
 			tr.append("<td>" + json[i].home_team.country + "</td>");
 			tr.append("<td>" + json[i].home_team.goals + " - " + json[i].away_team.goals +"</td>");
@@ -450,7 +450,7 @@ function getNextMatch() {
 						tr.append("<td id='away'>" + resultArr[i].awayTeam + "</td>"); 
 						$('#nextMatchTable').append(tr); 
 						$('#status').append(resultArr[i].status); 
-						$('#time').append(new Date(resultArr[i].time)); 
+						$('#time').append(new Date(resultArr[i].time).toLocaleString('en-GB')); 
 					} 		
 
 					defaultSortTable();
