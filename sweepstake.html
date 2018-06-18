@@ -37,7 +37,7 @@
 	  <div class="container">
 			<h1> Inventory List </h1>
 			<script>
-			$(document).ready(getActualResults());
+			$(document).ready(letsgo());
 				<!-- function () { -->
 				<!-- $.getJSON('./selections.json', -->
 				<!-- function (json) { -->
@@ -59,6 +59,7 @@
 			</script>
 			<div class="row">
 				<div class="col-md-4">
+					<h3>Current Standings</h3>
 					<p>Click Table header to sort</p>
 					<table id= "resulttable">
 					  <tr>
@@ -72,6 +73,16 @@
 					<div class="thumbnail">
 					  <img src="https://i.imgur.com/vLieuU6.gif">
 					</div>
+				</div>
+				<div class="col-md-4">
+				<h3>Next Match Predicitions</h3>
+					<p>Click Table header to sort</p>
+					<table id= "predictiontable">
+					  <tr>
+						<th onclick="sortTable(0, 'predictiontable', false)"> Player</th>
+						<th onclick="sortTable(1, 'predictiontable', true)"> Predicition</th>
+					  </tr>
+					</table>
 				</div>
 			</div>
 	  </div>

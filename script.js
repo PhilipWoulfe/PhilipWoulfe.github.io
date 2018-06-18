@@ -1,3 +1,7 @@
+var selectionJSON = 'https://api.myjson.com/bins/17za2m';
+// var selectionJSON = './selections.json';
+
+
 function getActualResults() {
 	var POINTS_FOR_MATCH_WIN = 1;
 	var POINTS_FOR_GROUP_WIN = 4;
@@ -12,15 +16,15 @@ function getActualResults() {
 		})
 		.done(function(data) {
 			matchesObj = data;
-			console.log(matchesObj);
+			//console.log(matchesObj);
 			
-			var selections = $.getJSON('./selections.json'
+			var selections = $.getJSON(selectionJSON
 				, function(data) {
 				//console.log(data);
 				})
 				.done(function(data) {
 					selectionsObj = data;
-					console.log(selectionsObj);
+					//console.log(selectionsObj);
 					
 
 					var selectionsResult = [];
@@ -67,7 +71,7 @@ function getActualResults() {
 						
 						
 					//console.log(selectionsResult);
-					console.log(resultArr);
+					//console.log(resultArr);
 					
 					var tr;
 					for (var i = 0; i < resultArr.length; i++) {
@@ -268,4 +272,110 @@ function defaultSortTable() {
       switching = true;
     }
   }
+}
+
+function predicateBy(prop){
+   return function(a,b){
+      if( a[prop] > b[prop]){
+          return 1;
+      }else if( a[prop] < b[prop] ){
+          return -1;
+      }
+      return 0;
+   }
+}
+
+function getNextResults() {
+	var matchesObj;
+	var selectionsObj;
+	var resultArr = [];
+	$.getJSON('https://world-cup-json.herokuapp.com/matches'
+		, function(data) {
+			//console.log(data);
+		})
+		.done(function(data) {
+			matchesObj = data;
+			//console.log(matchesObj);
+			
+			var selections = $.getJSON(selectionJSON
+				, function(data) {
+				//console.log(data);
+				})
+				.done(function(data) {
+					//console.log(matchesObj);
+					selectionsObj = data;
+					matchesObj.sort(predicateBy("datetime"));
+					//console.log(matchesObj);
+					 for (var m in matchesObj) {
+						if(matchesObj[m].status != 'completed') {
+							for (var s in selectionsObj) {
+								resultArr.push({name:selectionsObj[s].playerName, result: ""});
+								for (var am in selectionsObj[s].matches) {
+									if (matchesObj[m].away_team.country ==  selectionsObj[s].matches[am].awayTeam
+									&& matchesObj[m].home_team.country ==  selectionsObj[s].matches[am].homeTeam) {
+										resultArr[s].result = selectionsObj[s].matches[am].winner;
+									}
+								}
+							}
+							
+							break;
+						}
+					 }
+					/*
+					var selectionsResult = [];
+					for (var s in selectionsObj) {
+						// console.log({name: selectionsObj[s].playerName, score:0});
+						// if (s > 1)
+							// break;
+						var tmp = {name: selectionsObj[s].playerName, score:0};
+						resultArr.push(tmp)
+						// console.log(resultArr);
+						
+						for (var m in selectionsObj[s].matches) {
+							// var foundMatch = false;
+							// console.log(selectionsObj[s].matches[m]);
+
+							for (var am in matchesObj) {
+								// if (foundMatch)
+									// continue;
+								if (matchesObj[am].status != 'completed')
+									continue;
+								
+								if (matchesObj[am].away_team.country ==  selectionsObj[s].matches[m].awayTeam
+									&& matchesObj[am].home_team.country ==  selectionsObj[s].matches[m].homeTeam
+									&& matchesObj[am].winner ==  selectionsObj[s].matches[m].winner)
+									resultArr[s].score += POINTS_FOR_MATCH_WIN;
+									// foundMatch = true;
+									
+							}
+						}
+					}*/
+						
+						
+					//console.log(selectionsResult);
+					//console.log(resultArr);
+					
+					var tr;
+					for (var i = 0; i < resultArr.length; i++) {
+						tr = $('<tr/>');
+						tr.append("<td>" + resultArr[i].name + "</td>");
+						tr.append("<td>" + resultArr[i].result + "</td>"); 
+						$('#predictiontable').append(tr); 
+					} 		
+
+					defaultSortTable();
+				}
+			);
+			
+			
+			
+		});
+	// var matchesObj = JSON.parse(matches);
+	
+	//console.log(matchesObj);
+}
+
+function letsgo() {
+	getActualResults();
+	getNextResults();
 }
