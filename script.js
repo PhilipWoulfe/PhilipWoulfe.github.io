@@ -186,7 +186,7 @@ function getWorldCupScores() {
       /* Check if the two rows should switch place,
       based on the direction, asc or desc: */
       if (dir == "asc") {
-        if (isum) {
+        if (isNum) {
 			if (Number(x.innerHTML) > Number(y.innerHTML)) {
 			  // If so, mark as a switch and break the loop:
 			  shouldSwitch = true;
@@ -200,7 +200,7 @@ function getWorldCupScores() {
 			}
 		}
       } else if (dir == "desc") {
-		if (isum) {
+		if (isNum) {
 			if (Number(x.innerHTML) < Number(y.innerHTML)) {
 			  // If so, mark as a switch and break the loop:
 			  shouldSwitch = true;
