@@ -30,16 +30,16 @@
 	  <div class="container">
 			<h1> Inventory List </h1>
 			<script>$(document).ready(getWorldCupScores());</script>
-
+			<p>Click Table header to sort</p>
 			<table id= "table">
 			  <tr>
-				<th> Date</th>
-				<th> Status</th>
-				<th> Home Team</th>
-				<th> Home Team Goals</th>
-				<th> Away Team</th>
-				<th> Away Team Goals</th>
-				<th> Winner</th>
+				<th onclick="sortTable(0, 'table')"> Date</th>
+				<th onclick="sortTable(1, 'table')"> Status</th>
+				<th onclick="sortTable(2, 'table')"> Home Team</th>
+				<th onclick="sortTable(3, 'table')"> Home Team Goals</th>
+				<th onclick="sortTable(4, 'table')"> Away Team</th>
+				<th onclick="sortTable(5, 'table')"> Away Team Goals</th>
+				<th onclick="sortTable(6, 'table')"> Winner</th>
 			  </tr>
 
 			</table>

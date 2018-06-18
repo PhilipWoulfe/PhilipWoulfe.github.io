@@ -68,7 +68,7 @@ function getActualResults() {
 						$('#resulttable').append(tr); 
 					} 		
 
-					sortTable();
+					//sortTable("resulttable", 1, 0);
 				}
 			);
 			
@@ -147,15 +147,18 @@ function getWorldCupScores() {
 			tr.append("<td>" + json[i].winner + "</td>");
 			$('#table').append(tr);
 		}
+		
+		//sortTable("table", 0, 0);
 	});
  }
  
  //function mergeDataSets
- 
- function sortTable() {
-  var table, rows, switching, i, x, y, shouldSwitch;
-  table = document.getElementById("resulttable");
+ function sortTable(n, tableName) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById(tableName);
   switching = true;
+  // Set the sorting direction to ascending:
+  dir = "asc"; 
   /* Make a loop that will continue until
   no switching has been done: */
   while (switching) {
@@ -169,13 +172,22 @@ function getWorldCupScores() {
       shouldSwitch = false;
       /* Get the two elements you want to compare,
       one from current row and one from the next: */
-      x = rows[i].getElementsByTagName("TD")[1];
-      y = rows[i + 1].getElementsByTagName("TD")[1];
-      // Check if the two rows should switch place:
-      if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-        // If so, mark as a switch and break the loop:
-        shouldSwitch = true;
-        break;
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /* Check if the two rows should switch place,
+      based on the direction, asc or desc: */
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          // If so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          // If so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
       }
     }
     if (shouldSwitch) {
@@ -183,6 +195,15 @@ function getWorldCupScores() {
       and mark that a switch has been done: */
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
       switching = true;
+      // Each time a switch is done, increase this count by 1:
+      switchcount ++; 
+    } else {
+      /* If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again. */
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
     }
   }
 }
