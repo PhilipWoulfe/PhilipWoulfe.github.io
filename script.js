@@ -375,7 +375,99 @@ function getNextResults() {
 	//console.log(matchesObj);
 }
 
+function getNextMatch() {
+	var matchesObj;
+	var selectionsObj;
+	var resultArr = [];
+	$.getJSON('https://world-cup-json.herokuapp.com/matches'
+		, function(data) {
+			//console.log(data);
+		})
+		.done(function(data) {
+			matchesObj = data;
+			//console.log(matchesObj);
+			
+			var selections = $.getJSON(selectionJSON
+				, function(data) {
+				//console.log(data);
+				})
+				.done(function(data) {
+					//console.log(matchesObj);
+					selectionsObj = data;
+					matchesObj.sort(predicateBy("datetime"));
+					//console.log(matchesObj);
+					 for (var m in matchesObj) {
+						if(matchesObj[m].status != 'completed') {
+							resultArr.push({
+								status: matchesObj[m].status,
+								time: matchesObj[m].datetime,
+								homeTeam: matchesObj[m].away_team.country,
+								score: matchesObj[m].home_team.score + " - " + matchesObj[m].home_team.score,
+								awayTeam: matchesObj[m].home_team.country
+							});
+							break;
+						}
+					 }
+					/*
+					var selectionsResult = [];
+					for (var s in selectionsObj) {
+						// console.log({name: selectionsObj[s].playerName, score:0});
+						// if (s > 1)
+							// break;
+						var tmp = {name: selectionsObj[s].playerName, score:0};
+						resultArr.push(tmp)
+						// console.log(resultArr);
+						
+						for (var m in selectionsObj[s].matches) {
+							// var foundMatch = false;
+							// console.log(selectionsObj[s].matches[m]);
+
+							for (var am in matchesObj) {
+								// if (foundMatch)
+									// continue;
+								if (matchesObj[am].status != 'completed')
+									continue;
+								
+								if (matchesObj[am].away_team.country ==  selectionsObj[s].matches[m].awayTeam
+									&& matchesObj[am].home_team.country ==  selectionsObj[s].matches[m].homeTeam
+									&& matchesObj[am].winner ==  selectionsObj[s].matches[m].winner)
+									resultArr[s].score += POINTS_FOR_MATCH_WIN;
+									// foundMatch = true;
+									
+							}
+						}
+					}*/
+						
+						
+					//console.log(selectionsResult);
+					//console.log(resultArr);
+					
+					var tr;
+					for (var i = 0; i < resultArr.length; i++) {
+						tr = $('<tr/>');
+						tr.append("<td>" + resultArr[i].homeTeam + "</td>");
+						tr.append("<td>" + resultArr[i].score + "</td>"); 
+						tr.append("<td>" + resultArr[i].awayTeam + "</td>"); 
+						$('#nextMatchTable').append(tr); 
+						$('#status').append(resultArr[i].status); 
+						$('#time').append(resultArr[i].time); 
+					} 		
+
+					defaultSortTable();
+				}
+			);
+			
+			
+			
+		});
+	// var matchesObj = JSON.parse(matches);
+	
+	//console.log(matchesObj);
+}
+
+
 function letsgo() {
 	getActualResults();
 	getNextResults();
+	getNextMatch();
 }
