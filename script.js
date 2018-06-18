@@ -402,7 +402,7 @@ function getNextMatch() {
 								status: matchesObj[m].status,
 								time: matchesObj[m].datetime,
 								homeTeam: matchesObj[m].away_team.country,
-								score: matchesObj[m].home_team.score + " - " + matchesObj[m].home_team.score,
+								score: ((typeof matchesObj[m].home_team.score === 'undefined') ? 0 : matchesObj[m].home_team.score)  + " - " + ((typeof matchesObj[m].away_team.score === 'undefined') ? 0 :matchesObj[m].away_team.score),
 								awayTeam: matchesObj[m].home_team.country
 							});
 							break;
@@ -447,7 +447,7 @@ function getNextMatch() {
 						tr = $('<tr/>');
 						tr.append("<td>" + resultArr[i].homeTeam + "</td>");
 						tr.append("<td id='score'>" + resultArr[i].score + "</td>"); 
-						tr.append("<td>" + resultArr[i].awayTeam + "</td>"); 
+						tr.append("<td id='away'>" + resultArr[i].awayTeam + "</td>"); 
 						$('#nextMatchTable').append(tr); 
 						$('#status').append(resultArr[i].status); 
 						$('#time').append(new Date(resultArr[i].time)); 
