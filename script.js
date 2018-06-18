@@ -255,7 +255,7 @@ function defaultSortTable() {
       x = rows[i].getElementsByTagName("TD")[1];
       y = rows[i + 1].getElementsByTagName("TD")[1];
       // Check if the two rows should switch place:
-      if (Number(x.innerHTML) > Number(y.innerHTML)) {
+      if (Number(x.innerHTML) < Number(y.innerHTML)) {
         // If so, mark as a switch and break the loop:
         shouldSwitch = true;
         break;
