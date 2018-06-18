@@ -37,8 +37,7 @@
 	  <div class="container">
 			<h1> Inventory List </h1>
 			<script>
-			$(document).ready(
-				thing()
+			$(document).ready(getActualResults());
 				<!-- function () { -->
 				<!-- $.getJSON('./selections.json', -->
 				<!-- function (json) { -->
@@ -55,19 +54,14 @@
 					<!-- } -->
 				<!-- }); -->
 			<!-- } -->
-			);
+			<!-- ); -->
 
 			</script>
 
-			<table id= "table">
+			<table id= "resulttable">
 			  <tr>
-				<th> Date</th>
-				<th> Status</th>
-				<th> Home Team</th>
-				<th> Home Team Goals</th>
-				<th> Away Team</th>
-				<th> Away Team Goals</th>
-				<th> Winner</th>
+				<th> Player</th>
+				<th> Score</th>
 			  </tr>
 
 			</table>
