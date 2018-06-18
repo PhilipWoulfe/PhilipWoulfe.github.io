@@ -162,7 +162,7 @@ function getWorldCupScores() {
  }
  
  //function mergeDataSets
- function sortTable(n, tableName) {
+ function sortTable(n, tableName, isNum) {
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
   table = document.getElementById(tableName);
   switching = true;
@@ -186,17 +186,33 @@ function getWorldCupScores() {
       /* Check if the two rows should switch place,
       based on the direction, asc or desc: */
       if (dir == "asc") {
-        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-          // If so, mark as a switch and break the loop:
-          shouldSwitch = true;
-          break;
-        }
+        if (isum) {
+			if (Number(x.innerHTML) > Number(y.innerHTML)) {
+			  // If so, mark as a switch and break the loop:
+			  shouldSwitch = true;
+			  break;
+			}
+		else {
+			if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+			  // If so, mark as a switch and break the loop:
+			  shouldSwitch = true;
+			  break;
+			}
+		}
       } else if (dir == "desc") {
-        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-          // If so, mark as a switch and break the loop:
-          shouldSwitch = true;
-          break;
-        }
+		if (isum) {
+			if (Number(x.innerHTML) < Number(y.innerHTML)) {
+			  // If so, mark as a switch and break the loop:
+			  shouldSwitch = true;
+			  break;
+			}
+		else {
+			if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+			  // If so, mark as a switch and break the loop:
+			  shouldSwitch = true;
+			  break;
+			}
+		}
       }
     }
     if (shouldSwitch) {
@@ -209,10 +225,12 @@ function getWorldCupScores() {
     } else {
       /* If no switching has been done AND the direction is "asc",
       set the direction to "desc" and run the while loop again. */
-      if (switchcount == 0 && dir == "asc") {
-        dir = "desc";
-        switching = true;
-      }
-    }
+		if (switchcount == 0 && dir == "asc") {
+			dir = "desc";
+			switching = true;
+		}
+	  }
+	}
   }
-}
+  }
+ }
