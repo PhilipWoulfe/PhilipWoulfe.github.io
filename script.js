@@ -475,6 +475,6 @@ function getNextMatch() {
 
 function letsgo() {
 	getActualResults();
-	getNextResults(1);
+	getNextResults(2);
 	getNextMatch();
 }
