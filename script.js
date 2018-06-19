@@ -11,7 +11,7 @@ function getActualResults() {
 	var matchesObj;
 	var selectionsObj;
 	var resultArr = [];
-	$.getJSON('./results.json
+	$.getJSON(resultsJson
 		, function(data) {
 			//console.log(data);
 		})
