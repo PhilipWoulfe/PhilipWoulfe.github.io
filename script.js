@@ -1,5 +1,5 @@
-var selectionJSON = 'https://api.myjson.com/bins/17za2m';
-// var selectionJSON = './selections.json';
+// var selectionJSON = 'https://api.myjson.com/bins/17za2m';
+var selectionJSON = './selections.json';
 
 
 function getActualResults() {
