@@ -402,7 +402,7 @@ function getNextMatch() {
 								status: matchesObj[m].status,
 								time: matchesObj[m].datetime,
 								homeTeam: matchesObj[m].away_team.country,
-								score: ((typeof matchesObj[m].home_team.score === 'undefined') ? 0 : matchesObj[m].home_team.score)  + " - " + ((typeof matchesObj[m].away_team.score === 'undefined') ? 0 :matchesObj[m].away_team.score),
+								score: ((typeof matchesObj[m].home_team.goals === 'undefined') ? 0 : matchesObj[m].home_team.goals)  + " - " + ((typeof matchesObj[m].away_team.goals === 'undefined') ? 0 :matchesObj[m].away_team.goals),
 								awayTeam: matchesObj[m].home_team.country
 							});
 							break;
