@@ -316,7 +316,7 @@ function getNextResults(i) {
 								var two = tmp;
 								var four = matchesObj;
 								var three = matchesObj[m];
-								var three = matchesObj[m] + 1;
+								var four = matchesObj[m] + 1;
 								
 								for (var am in selectionsObj[s].matches) {
 									if (matchesObj[m + 1].away_team.country ==  selectionsObj[s].matches[am].awayTeam
