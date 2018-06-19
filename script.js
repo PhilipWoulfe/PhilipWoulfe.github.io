@@ -308,7 +308,7 @@ function getNextResults(i) {
 					selectionsObj = data;
 					matchesObj.sort(predicateBy("datetime"));
 					//console.log(matchesObj);
-					 for (int m = 0; m < matchesObj.length; m++) {
+					 for (var m = 0; m < matchesObj.length; m++) {
 						if(matchesObj[m].status != 'completed') {
 							for (var s in selectionsObj) {
 								resultArr.push({name:selectionsObj[s].playerName, result: ""});
