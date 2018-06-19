@@ -1,6 +1,7 @@
-// var selectionJSON = 'https://api.myjson.com/bins/17za2m';
-var selectionJSON = './selections.json';
-
+var selectionJSON = 'https://api.myjson.com/bins/17za2m';
+//var selectionJSON = './selections.json';
+//var resultsJson = 'https://world-cup-json.herokuapp.com/matches';
+var resultsJson = './results.json';
 
 function getActualResults() {
 	var POINTS_FOR_MATCH_WIN = 1;
@@ -10,7 +11,7 @@ function getActualResults() {
 	var matchesObj;
 	var selectionsObj;
 	var resultArr = [];
-	$.getJSON('https://world-cup-json.herokuapp.com/matches'
+	$.getJSON('./results.json
 		, function(data) {
 			//console.log(data);
 		})
@@ -96,7 +97,7 @@ function getActualResults() {
 
 // function getActualResults() {
 	// return $.ajax({
-		// url: "https://world-cup-json.herokuapp.com/matches",
+		// url: "./results.json",
 		// dataType: "json",
 		// data: 
 	
@@ -104,7 +105,7 @@ function getActualResults() {
 	
 	
 	// var matchesObj;
-	// $.when($.getJSON('https://world-cup-json.herokuapp.com/matches'
+	// $.when($.getJSON('./results.json'
 							// , function(data) {
 								// console.log(data);
 							// })
@@ -147,7 +148,7 @@ function getActualResults() {
 		//https://stackoverflow.com/questions/42298265/alasql-nested-arrays
  // }	
 function getWorldCupScores() {
-	$.getJSON('https://world-cup-json.herokuapp.com/matches',
+	$.getJSON('./results.json',
 	function (json) {
 		var tr;
 		for (var i = 0; i < json.length; i++) {
@@ -285,11 +286,12 @@ function predicateBy(prop){
    }
 }
 
-function getNextResults() {
+function getNextResults(i) {
+	var tmp = i;
 	var matchesObj;
 	var selectionsObj;
 	var resultArr = [];
-	$.getJSON('https://world-cup-json.herokuapp.com/matches'
+	$.getJSON('./results.json'
 		, function(data) {
 			//console.log(data);
 		})
@@ -310,9 +312,15 @@ function getNextResults() {
 						if(matchesObj[m].status != 'completed') {
 							for (var s in selectionsObj) {
 								resultArr.push({name:selectionsObj[s].playerName, result: ""});
+								var one = m;
+								var two = tmp;
+								var four = matchesObj;
+								var three = matchesObj[m];
+								var three = matchesObj[m] + 1;
+								
 								for (var am in selectionsObj[s].matches) {
-									if (matchesObj[m].away_team.country ==  selectionsObj[s].matches[am].awayTeam
-									&& matchesObj[m].home_team.country ==  selectionsObj[s].matches[am].homeTeam) {
+									if (matchesObj[m + 1].away_team.country ==  selectionsObj[s].matches[am].awayTeam
+									&& matchesObj[m + 1].home_team.country ==  selectionsObj[s].matches[am].homeTeam) {
 										resultArr[s].result = selectionsObj[s].matches[am].winner;
 									}
 								}
@@ -379,7 +387,7 @@ function getNextMatch() {
 	var matchesObj;
 	var selectionsObj;
 	var resultArr = [];
-	$.getJSON('https://world-cup-json.herokuapp.com/matches'
+	$.getJSON('./results.json'
 		, function(data) {
 			//console.log(data);
 		})
@@ -468,6 +476,6 @@ function getNextMatch() {
 
 function letsgo() {
 	getActualResults();
-	getNextResults();
+	getNextResults(1);
 	getNextMatch();
 }
