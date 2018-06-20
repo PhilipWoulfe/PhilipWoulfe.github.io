@@ -50,9 +50,9 @@ function getWorldCupScores() {
 			tr.append("<td>" + new Date(json[i].datetime).toLocaleString('en-GB') + "</td>");
 			tr.append("<td>" + json[i].status + "</td>");
 			tr.append("<td>" + json[i].home_team.country + "</td>");
-			tr.append("<td id='score'>" + json[i].home_team.goals + " - " + json[i].away_team.goals +"</td>");
+			tr.append("<td id='score'>" + (typeof(json[i].home_team.goals) === 'undefined' ? 0 : json[i].home_team.goals) + " - " + (typeof(json[i].away_team.goals) === 'undefined' ? 0 : json[i].away_team.goals) +"</td>");
 			tr.append("<td>" + json[i].away_team.country + "</td>");
-			tr.append("<td>" + json[i].winner + "</td>");
+			tr.append("<td>" + (json[i].winner == null ? "" : json[i].winner))
 			$('#table').append(tr);
 		}
 		
