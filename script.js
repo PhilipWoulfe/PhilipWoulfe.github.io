@@ -23,6 +23,7 @@ function letsgo() {
 			
 			var selections = $.getJSON(selectionJSON
 				, function(data) {
+					
 				})
 				.done(function(data) {
 					selectionsObj = data;
@@ -55,7 +56,6 @@ function getWorldCupScores() {
 
 function getActualResults(matchesObj, selectionsObj) {
 	var resultArr = [];
-					
 
 	var selectionsResult = [];
 	for (var s in selectionsObj) {
@@ -68,11 +68,6 @@ function getActualResults(matchesObj, selectionsObj) {
 			for (var am in matchesObj) {
 				if (matchesObj[am].status != 'completed')
 					continue;
-				var awayTeam = matchesObj[am].away_team.country;
-				var homeTeam = matchesObj[am].home_team.country;
-				var away = selectionsObj[s].matches[m].awayTeam;
-				var home = selectionsObj[s].matches[m].homeTeam;
-				var winner = matchesObj[am].winner ==  selectionsObj[s].matches[m].winner;
 				
 				if (matchesObj[am].away_team.country ==  selectionsObj[s].matches[m].awayTeam
 					&& matchesObj[am].home_team.country ==  selectionsObj[s].matches[m].homeTeam
@@ -224,10 +219,6 @@ function getNextResults(matchesObj, selectionsObj, i) {
 		if(matchesObj[m].status != 'completed') {
 			for (var s in selectionsObj) {
 				resultArr.push({name:selectionsObj[s].playerName, result: ""});
-				var one = m;
-				var two = tmp;
-				var four = matchesObj;
-				var three = matchesObj[m];
 				
 				for (var am in selectionsObj[s].matches) {
 					if (matchesObj[m + tmp].away_team.country ==  selectionsObj[s].matches[am].awayTeam
@@ -262,7 +253,8 @@ function getNextMatch(matchesObj, selectionsObj) {
 				time: matchesObj[m].datetime,
 				homeTeam: matchesObj[m].home_team.country,
 				score: ((typeof matchesObj[m].home_team.goals === 'undefined') ? 0 : matchesObj[m].home_team.goals)  + " - " + ((typeof matchesObj[m].away_team.goals === 'undefined') ? 0 :matchesObj[m].away_team.goals),
-				awayTeam: matchesObj[m].away_team.country
+				awayTeam: matchesObj[m].away_team.country,
+				matchTime: matchesObj[m].time
 			});
 			break;
 		}
@@ -276,6 +268,7 @@ function getNextMatch(matchesObj, selectionsObj) {
 		$('#nextMatchTable').append(tr); 
 		$('#status').append(resultArr[i].status); 
 		$('#time').append(new Date(resultArr[i].time).toLocaleString('en-GB')); 
+		$('#matchTime').append(resultArr[i].matchTime);
 	} 		
 
 	defaultSortTable();
