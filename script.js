@@ -1,7 +1,11 @@
-// var selectionJSON = 'https://api.myjson.com/bins/17za2m';
-var selectionJSON = './selections.json';
-var resultsJson = 'https://world-cup-json.herokuapp.com/matches';
-// var resultsJson = 'https://api.myjson.com/bins/148p8q';
+var selectionJSON = 'https://api.myjson.com/bins/17za2m';
+// var selectionJSON = './selections.json';
+// var resultsJson = 'https://world-cup-json.herokuapp.com/matches';
+var resultsJson = 'https://api.myjson.com/bins/148p8q';
+
+var matchesObjGlob;
+var selectionsObjGlob;
+var currentMatch;
 
 var POINTS_FOR_MATCH_WIN = 1;
 var POINTS_FOR_GROUP_WIN = 4;
@@ -30,6 +34,9 @@ function letsgo() {
 					getActualResults(matchesObj, selectionsObj);
 					getNextResults(matchesObj, selectionsObj, 0);
 					getNextMatch(matchesObj, selectionsObj);
+					
+					matchesObjGlob = matchesObj;
+					selectionsObjGlob = selectionsObj;
 				})
 		})
 };
@@ -210,9 +217,16 @@ function predicateBy(prop){
    }
 }
 
+// function getNextResults(i) {
+	// getNextResults(matchesObjGlob, selectionsObjGlob, i);
+// }
+
 function getNextResults(matchesObj, selectionsObj, i) {
 	var tmp = i;
 	var resultArr = [];
+	
+	if (typeof myVar != 'undefined' && !(currentMatch + i >= 0 && currentMatch < matchesObjGlob.length))
+		return;
 	
 	matchesObj.sort(predicateBy("datetime"));
 	 for (var m = 0; m < matchesObj.length; m++) {
@@ -256,6 +270,7 @@ function getNextMatch(matchesObj, selectionsObj) {
 				awayTeam: matchesObj[m].away_team.country,
 				matchTime: matchesObj[m].time
 			});
+			currentMatch = m;
 			break;
 		}
 	 }					
