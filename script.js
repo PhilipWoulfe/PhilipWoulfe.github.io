@@ -1,7 +1,7 @@
-var selectionJSON = 'https://api.myjson.com/bins/17za2m';
-//var selectionJSON = './selections.json';
-//var resultsJson = 'https://world-cup-json.herokuapp.com/matches';
-var resultsJson = 'https://api.myjson.com/bins/148p8q';
+// var selectionJSON = 'https://api.myjson.com/bins/17za2m';
+var selectionJSON = './selections.json';
+var resultsJson = 'https://world-cup-json.herokuapp.com/matches';
+// var resultsJson = 'https://api.myjson.com/bins/148p8q';
 var POINTS_FOR_MATCH_WIN = 1;
 var POINTS_FOR_GROUP_WIN = 4;
 var POINTS_FOR_GROUP_SEC = 2;
