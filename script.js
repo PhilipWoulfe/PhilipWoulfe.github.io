@@ -2,6 +2,7 @@
 var selectionJSON = './selections.json';
 var resultsJson = 'https://world-cup-json.herokuapp.com/matches';
 // var resultsJson = 'https://api.myjson.com/bins/148p8q';
+
 var POINTS_FOR_MATCH_WIN = 1;
 var POINTS_FOR_GROUP_WIN = 4;
 var POINTS_FOR_GROUP_SEC = 2;
@@ -31,6 +32,25 @@ function letsgo() {
 				})
 		})
 };
+
+function getWorldCupScores() {
+	$.getJSON(resultsJson,
+	function (json) {
+		var tr;
+		for (var i = 0; i < json.length; i++) {
+			tr = $('<tr/>');
+			tr.append("<td>" + new Date(json[i].datetime).toLocaleString('en-GB') + "</td>");
+			tr.append("<td>" + json[i].status + "</td>");
+			tr.append("<td>" + json[i].home_team.country + "</td>");
+			tr.append("<td id='score'>" + json[i].home_team.goals + " - " + json[i].away_team.goals +"</td>");
+			tr.append("<td>" + json[i].away_team.country + "</td>");
+			tr.append("<td>" + json[i].winner + "</td>");
+			$('#table').append(tr);
+		}
+		
+		//sortTable("table", 0, 0);
+	});
+ }
 
 
 function getActualResults(matchesObj, selectionsObj) {
