@@ -113,3 +113,7 @@ th {
 #away, #awayCell{
 	text-align: right;
 }
+
+button {
+	margin: 0;
+}

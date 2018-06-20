@@ -1,7 +1,7 @@
-// var selectionJSON = 'https://api.myjson.com/bins/17za2m';
-var selectionJSON = './selections.json';
-var resultsJson = 'https://world-cup-json.herokuapp.com/matches';
-// var resultsJson = 'https://api.myjson.com/bins/148p8q';
+var selectionJSON = 'https://api.myjson.com/bins/17za2m';
+// var selectionJSON = './selections.json';
+// var resultsJson = 'https://world-cup-json.herokuapp.com/matches';
+var resultsJson = 'https://api.myjson.com/bins/148p8q';
 
 var matchesObjGlob;
 var selectionsObjGlob;
@@ -252,7 +252,7 @@ function changeMatch(m) {
 			
 	$('#status').text('Next Match Status: ' + resultArr[0].status);
 	$('#time').text("Next Match Starts At: " + new Date(resultArr[0].time).toLocaleString('en-GB')); 
-	$('#matchTime').text("Match TIme: " + resultArr[0].matchTime);
+	$('#matchTime').text("Match Time: " + (resultArr[0].matchTime == null ? "" : resultArr[0].matchTime));
 	$('#homeCell').text(resultArr[0].homeTeam);
 	$('#scoreCell').text(resultArr[0].score); 
 	$('#awayCell').text(resultArr[0].awayTeam); 
