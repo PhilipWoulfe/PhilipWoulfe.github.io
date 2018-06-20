@@ -32,7 +32,7 @@ function letsgo() {
 				.done(function(data) {
 					selectionsObj = data;
 					getActualResults(matchesObj, selectionsObj);
-					getNextResults(matchesObj, selectionsObj, 0);
+					getNextResults(matchesObj, selectionsObj);
 					getNextMatch(matchesObj, selectionsObj);
 					
 					matchesObjGlob = matchesObj;
@@ -217,16 +217,68 @@ function predicateBy(prop){
    }
 }
 
-// function getNextResults(i) {
-	// getNextResults(matchesObjGlob, selectionsObjGlob, i);
-// }
+function changeMatch(m) {
+	var resultArr = [];
+	var selectionArr = [];
+	
+	if (typeof myVar != 'undefined' && !(currentMatch >= 0 && currentMatch < matchesObjGlob.length))
+		return;
 
-function getNextResults(matchesObj, selectionsObj, i) {
+	currentMatch += m;
+	
+	var matchesObj = matchesObjGlob;
+	var selectionsObj = selectionsObjGlob;
+	
+	resultArr.push({
+				status: matchesObj[currentMatch].status,
+				time: matchesObj[currentMatch].datetime,
+				homeTeam: matchesObj[currentMatch].home_team.country,
+				score: ((typeof matchesObj[currentMatch].home_team.goals === 'undefined') ? 0 : matchesObj[currentMatch].home_team.goals)  + " - " + ((typeof matchesObj[currentMatch].away_team.goals === 'undefined') ? 0 :matchesObj[currentMatch].away_team.goals),
+				awayTeam: matchesObj[currentMatch].away_team.country,
+				matchTime: matchesObj[currentMatch].time
+			});
+
+	for (var s in selectionsObj) {
+		selectionArr.push({name:selectionsObj[s].playerName, result: ""});
+		
+		for (var am in selectionsObj[s].matches) {
+			if (matchesObj[currentMatch].away_team.country ==  selectionsObj[s].matches[am].awayTeam
+			&& matchesObj[currentMatch].home_team.country ==  selectionsObj[s].matches[am].homeTeam) {
+				selectionArr[s].result = selectionsObj[s].matches[am].winner;
+			}
+		}
+	}
+	
+			
+	$('#status').text('Next Match Status: ' + resultArr[0].status);
+	$('#time').text("Next Match Starts At: " + new Date(resultArr[0].time).toLocaleString('en-GB')); 
+	$('#matchTime').text("Match TIme: " + resultArr[0].matchTime);
+	$('#homeCell').text(resultArr[0].homeTeam);
+	$('#scoreCell').text(resultArr[0].score); 
+	$('#awayCell').text(resultArr[0].awayTeam); 
+	
+	$("#predictiontable").find("tr:gt(0)").remove();
+
+	
+	var tr;
+	for (var i = 0; i < selectionArr.length; i++) {
+		tr = $('<tr/>');
+		tr.append("<td>" + selectionArr[i].name + "</td>");
+		tr.append("<td>" + selectionArr[i].result + "</td>"); 
+		$('#predictiontable').append(tr); 
+	} 		
+
+	defaultSortTable();
+	
+
+}
+
+function getNextResults(matchesObj, selectionsObj) {
 	var tmp = i;
 	var resultArr = [];
 	
-	if (typeof myVar != 'undefined' && !(currentMatch + i >= 0 && currentMatch < matchesObjGlob.length))
-		return;
+	// if (typeof myVar != 'undefined' && !(currentMatch + i >= 0 && currentMatch < matchesObjGlob.length))
+		// return;
 	
 	matchesObj.sort(predicateBy("datetime"));
 	 for (var m = 0; m < matchesObj.length; m++) {
@@ -235,8 +287,8 @@ function getNextResults(matchesObj, selectionsObj, i) {
 				resultArr.push({name:selectionsObj[s].playerName, result: ""});
 				
 				for (var am in selectionsObj[s].matches) {
-					if (matchesObj[m + tmp].away_team.country ==  selectionsObj[s].matches[am].awayTeam
-					&& matchesObj[m + tmp].home_team.country ==  selectionsObj[s].matches[am].homeTeam) {
+					if (matchesObj[m].away_team.country ==  selectionsObj[s].matches[am].awayTeam
+					&& matchesObj[m].home_team.country ==  selectionsObj[s].matches[am].homeTeam) {
 						resultArr[s].result = selectionsObj[s].matches[am].winner;
 					}
 				}
@@ -270,16 +322,16 @@ function getNextMatch(matchesObj, selectionsObj) {
 				awayTeam: matchesObj[m].away_team.country,
 				matchTime: matchesObj[m].time
 			});
-			currentMatch = m;
+			currentMatch = parseInt(m);
 			break;
 		}
 	 }					
 	var tr;
 	for (var i = 0; i < resultArr.length; i++) {
 		tr = $('<tr/>');
-		tr.append("<td>" + resultArr[i].homeTeam + "</td>");
-		tr.append("<td id='score'>" + resultArr[i].score + "</td>"); 
-		tr.append("<td id='away'>" + resultArr[i].awayTeam + "</td>"); 
+		tr.append("<td id='homeCell'>" + resultArr[i].homeTeam + "</td>");
+		tr.append("<td id='scoreCell'>" + resultArr[i].score + "</td>"); 
+		tr.append("<td id='awayCell'>" + resultArr[i].awayTeam + "</td>"); 
 		$('#nextMatchTable').append(tr); 
 		$('#status').append(resultArr[i].status); 
 		$('#time').append(new Date(resultArr[i].time).toLocaleString('en-GB')); 

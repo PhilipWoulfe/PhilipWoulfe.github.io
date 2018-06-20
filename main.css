@@ -98,7 +98,7 @@ th {
     height: 50px;
 }
 
-#score {
+#score, #matchTime, #scoreHeader, #scoreCell, #awayCell {
 	text-align: center;
 }
 
@@ -110,6 +110,6 @@ th {
 	text-align: center;
 }
 
-#away{
+#away, #awayCell{
 	text-align: right;
 }

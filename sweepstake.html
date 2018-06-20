@@ -57,14 +57,18 @@
 					<p id="time">Next Match Starts At: </p>
 					<table id= "nextMatchTable">
 					  <tr>
-						<th> Home</th>
+						<th ide="home"> Home</th>
 						<th id="scoreHeader"> Score</th>
 						<th id="away"> Away</th>
 					  </tr>
 					</table>
 					<p id="matchTime">Match TIme: </p>
-					<!--<button onclick="getNextResults(-1)">Previous</button>
-					<button onclick="getNextResults(1)">Next</button>-->
+					<div class="row">
+						<div class="col-lg-12">
+							<button class="btn btn-secondary float-left" id="back" onclick="changeMatch(-1)">Previous</button>
+							<button class="btn btn-secondary float-right" id="right" onclick="changeMatch(1)">Next</button>
+						</div>
+					</div>	
 					<div class="thumbnail">
 					  <img src="./images/ad.gif">
 					</div>
