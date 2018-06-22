@@ -316,7 +316,7 @@ function getNextMatch(matchesObj, selectionsObj) {
 		if(matchesObj[m].status != 'completed') {
 			resultArr.push({
 				status: matchesObj[m].status,
-				time: matchesObj[m].datetime,
+				time: matchesObj[m].fifa_id == 300331487 ?	"2018-06-21T15:00:00Z" : matchesObj[m].fifa_id == 300340183 ? "2018-06-21T18:00:00Z" : matchesObj[m].datetime,
 				homeTeam: matchesObj[m].home_team.country,
 				score: ((typeof matchesObj[m].home_team.goals === 'undefined') ? 0 : matchesObj[m].home_team.goals)  + " - " + ((typeof matchesObj[m].away_team.goals === 'undefined') ? 0 :matchesObj[m].away_team.goals),
 				awayTeam: matchesObj[m].away_team.country,
