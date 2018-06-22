@@ -68,6 +68,13 @@
 						<button type="button" class="btn btn-secondary" onclick="changeMatch(-1)">Previous</button>
 						<button type="button" class="btn btn-secondary" onclick="changeMatch(1)">Next</button>
 					</div>
+					<form action="">
+					  <input type="radio" name="winner" value="home" onclick="getPredictedValue('home')"> Home
+					  <input type="radio" name="winner" value="draw" onclick="getPredictedValue('draw')"> Draw
+					  <input type="radio" name="winner" value="away" onclick="getPredictedValue('away')"> Away
+					</form>
+					
+					
 					<div class="thumbnail">
 					  <img src="./images/ad.gif">
 					</div>

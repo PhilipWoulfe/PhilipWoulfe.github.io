@@ -1,7 +1,7 @@
-// var selectionJSON = 'https://api.myjson.com/bins/17za2m';
-var selectionJSON = './selections.json';
-var resultsJson = 'https://world-cup-json.herokuapp.com/matches';
-// var resultsJson = 'https://api.myjson.com/bins/148p8q';
+var selectionJSON = 'https://api.myjson.com/bins/17za2m';
+// var selectionJSON = './selections.json';
+// var resultsJson = 'https://world-cup-json.herokuapp.com/matches';
+var resultsJson = 'https://api.myjson.com/bins/148p8q';
 
 var matchesObjGlob;
 var selectionsObjGlob;
@@ -44,6 +44,8 @@ function letsgo() {
 function getWorldCupScores() {
 	$.getJSON(resultsJson,
 	function (json) {
+		
+		$("#predictiontable").find("tr:gt(0)").remove();	
 		var tr;
 		for (var i = 0; i < json.length; i++) {
 			tr = $('<tr/>');
@@ -63,7 +65,7 @@ function getWorldCupScores() {
 
 function getActualResults(matchesObj, selectionsObj) {
 	var resultArr = [];
-
+	$("#resulttable").find("tr:gt(0)").remove();
 	var selectionsResult = [];
 	for (var s in selectionsObj) {
 		//console.log({name: selectionsObj[s].playerName, score:0});
@@ -297,7 +299,7 @@ function getNextResults(matchesObj, selectionsObj) {
 			break;
 		}
 	 }
-	
+	$("#predictiontable").find("tr:gt(0)").remove();	 
 	var tr;
 	for (var i = 0; i < resultArr.length; i++) {
 		tr = $('<tr/>');
@@ -316,7 +318,7 @@ function getNextMatch(matchesObj, selectionsObj) {
 		if(matchesObj[m].status != 'completed') {
 			resultArr.push({
 				status: matchesObj[m].status,
-				time: matchesObj[m].datetime, //matchesObj[m].fifa_id == 300331487 ?	"2018-06-21T15:00:00Z" : matchesObj[m].fifa_id == 300340183 ? "2018-06-21T18:00:00Z" : matchesObj[m].datetime,
+				time: matchesObj[m].datetime, 	//matchesObj[m].fifa_id == 300331487 ?	"2018-06-21T15:00:00Z" : matchesObj[m].fifa_id == 300340183 ? "2018-06-21T18:00:00Z" : matchesObj[m].datetime,
 				homeTeam: matchesObj[m].home_team.country,
 				score: ((typeof matchesObj[m].home_team.goals === 'undefined') ? 0 : matchesObj[m].home_team.goals)  + " - " + ((typeof matchesObj[m].away_team.goals === 'undefined') ? 0 :matchesObj[m].away_team.goals),
 				awayTeam: matchesObj[m].away_team.country,
@@ -325,7 +327,9 @@ function getNextMatch(matchesObj, selectionsObj) {
 			currentMatch = parseInt(m);
 			break;
 		}
-	 }					
+	 }	
+
+	
 	var tr;
 	for (var i = 0; i < resultArr.length; i++) {
 		tr = $('<tr/>');
@@ -340,3 +344,19 @@ function getNextMatch(matchesObj, selectionsObj) {
 
 	defaultSortTable();
 };
+
+function getPredictedValue(team) {
+	var clone = Object.assign({}, matchesObjGlob);
+	clone[currentMatch].status = 'Completed';
+	clone[currentMatch].winner = getWinner(team);
+	getActualResults(clone, selectionsObjGlob);
+}
+
+function getWinner(team) {
+	if (team == 'home')
+		return matchesObjGlob[currentMatch].home_team.country;
+	else if (team == 'away')
+		return matchesObjGlob[currentMatch].away_team.country;
+	else
+		return 'draw';
+}
