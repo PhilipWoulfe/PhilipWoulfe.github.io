@@ -1,10 +1,13 @@
 // var selectionJSON = 'https://api.myjson.com/bins/17za2m';
 var selectionJSON = './selections.json';
 var resultsJson = 'https://world-cup-json.herokuapp.com/matches';
-// var resultsJson = 'https://api.myjson.com/bins/148p8q';
+// var resultsJson = 'https://api.myjson.com/bins/f8da6';
+var groupJson = 'https://worldcup.sfg.io/teams/group_results'
+// var groupJson = 'https://api.myjson.com/bins/ya8n2';
 
 var matchesObjGlob;
 var selectionsObjGlob;
+var groupObjGlob;
 var currentMatch;
 
 var POINTS_FOR_MATCH_WIN = 1;
@@ -16,6 +19,7 @@ function letsgo() {
 
 	var matchesObj;
 	var selectionsObj;
+	var groupObj;
 	var resultArr = [];
 	$.getJSON(resultsJson
 		, function(data) {
@@ -25,18 +29,29 @@ function letsgo() {
 			matchesObj = data;
 			//console.log(matchesObj);
 			
-			var selections = $.getJSON(selectionJSON
+			$.getJSON(selectionJSON
 				, function(data) {
 					
 				})
 				.done(function(data) {
 					selectionsObj = data;
-					getActualResults(matchesObj, selectionsObj);
-					getNextResults(matchesObj, selectionsObj);
-					getNextMatch(matchesObj, selectionsObj);
 					
-					matchesObjGlob = matchesObj;
-					selectionsObjGlob = selectionsObj;
+					$.getJSON(groupJson
+						, function(data) {
+						
+						})
+						.done(function(data) {
+							groupObj = data;
+							
+							getActualResults(matchesObj, selectionsObj, groupObj);
+							getNextResults(matchesObj, selectionsObj);
+							getNextMatch(matchesObj, selectionsObj);
+							
+							matchesObjGlob = matchesObj;
+							selectionsObjGlob = selectionsObj;
+							groupObjGlob = groupObj;
+						})
+
 				})
 		})
 };
@@ -63,7 +78,7 @@ function getWorldCupScores() {
  }
 
 
-function getActualResults(matchesObj, selectionsObj) {
+function getActualResults(matchesObj, selectionsObj, groupObj) {
 	var resultArr = [];
 	$("#resulttable").find("tr:gt(0)").remove();
 	var selectionsResult = [];
@@ -77,6 +92,8 @@ function getActualResults(matchesObj, selectionsObj) {
 			for (var am in matchesObj) {
 				if (matchesObj[am].status != 'completed')
 					continue;
+				if (matchesObj[am].datetime > '2018-06-28T18:00:00Z')
+					continue;
 				
 				if (matchesObj[am].away_team.country ==  selectionsObj[s].matches[m].awayTeam
 					&& matchesObj[am].home_team.country ==  selectionsObj[s].matches[m].homeTeam
@@ -86,6 +103,7 @@ function getActualResults(matchesObj, selectionsObj) {
 					
 			}
 		}
+		
 	}
 	
 	var tr;

@@ -12,7 +12,89 @@
     
 	
 	<script>
+		function getActualResults(matchesObj, selectionsObj, groupObj) {
+			var resultArr = [];
+			var res2 = [];
+			$("#resulttable").find("tr:gt(0)").remove();
+			var selectionsResult = [];
+			for (var s in selectionsObj) {
+				//console.log({name: selectionsObj[s].playerName, score:0});
+				// if (s > 1)
+					// break;
+				var tmp = {name: selectionsObj[s].playerName, score:0};
+				resultArr.push(tmp)
+				for (var m in selectionsObj[s].matches) {
+					for (var am in matchesObj) {
+						if (matchesObj[am].status != 'completed')
+							continue;
+						if (matchesObj[am].datetime > '2018-06-28T18:00:00Z')
+							continue;
+						
+						if (matchesObj[am].away_team.country ==  selectionsObj[s].matches[m].awayTeam
+							&& matchesObj[am].home_team.country ==  selectionsObj[s].matches[m].homeTeam
+							&& matchesObj[am].winner ==  selectionsObj[s].matches[m].winner)
+							resultArr[s].score += POINTS_FOR_MATCH_WIN;
+							// foundMatch = true;
+							
+					}
+				}
+				
+				
+				// DON'T LOOK AT THEIS MESS! DO YOU THINK I'M PROUD OF IT?
+				var keys = Object.keys(selectionsObj[s].groupResults);
+				
 
+				var res = {name: selectionsObj[s].playerName, score:0};
+				res2.push(res);
+				loop1:
+				for (var g in groupObj) {
+
+					var anotherVar = parseInt(groupObj[g].group.teams[0].team.games_played);
+					//console.log(groupObj);
+					if (parseInt(groupObj[g].group.teams[0].team.games_played) < 3)
+						continue;
+					if (parseInt(groupObj[g].group.teams[1].team.games_played) < 3)
+						continue;
+					if (parseInt(groupObj[g].group.teams[2].team.games_played) < 3)
+						continue;
+					if (parseInt(groupObj[g].group.teams[3].team.games_played) < 3)
+						continue;
+					
+
+					for ( var group in keys) {
+						
+						var a = groupObj[g].group.letter ;
+						var b = keys[group];
+						var c = groupObj[g].group.teams[0].team.country;
+						var d = selectionsObj[s].groupResults[keys[group]];
+						var e = groupObj[g].group.teams[1].team.country;
+						var f = selectionsObj[s].groupResults[keys[group]];
+						
+						if (groupObj[g].group.letter != keys[group] )
+							continue;
+						
+						if ( groupObj[g].group.letter == keys[group] && groupObj[g].group.teams[0].team.country == selectionsObj[s].groupResults[keys[group]])
+							resultArr[s].score += POINTS_FOR_GROUP_WIN;
+							// res2[s].score += POINTS_FOR_GROUP_WIN;
+						if ( groupObj[g].group.letter == keys[group] && groupObj[g].group.teams[1].team.country == selectionsObj[s].groupResults[keys[group]])
+							// res2[s].score += POINTS_FOR_GROUP_SEC;
+							resultArr[s].score += POINTS_FOR_GROUP_SEC;
+						
+						break;
+					}
+				}
+			}
+			
+			var tr;
+			for (var i = 0; i < resultArr.length; i++) {
+				tr = $('<tr/>');
+				tr.append("<td>" + resultArr[i].name + "</td>");
+				tr.append("<td>" + resultArr[i].score + "</td>"); 
+				$('#resulttable').append(tr); 
+			} 		
+
+			defaultSortTable();
+		};
 	</script>
 	
   </head>
@@ -23,8 +105,8 @@
         <ul class="pull-left">
           <li><a href="./index.html">Home</a></li>
           <li><a href="./matches.html">Match Results</a></li>
-		  <li><a href="#">Sweepstakes Table</a></li>
-		  <li><a href="./test.html" style="color:red;">Test</a></li>
+		  <li><a href="./sweepstake.html">Sweepstakes Table</a></li>
+		  <li><a href="./test.html" style="color:red">Test</a></li>
         </ul>
         <ul class="pull-right">
           <li><a href="#">Sign Up</a></li>
@@ -36,7 +118,7 @@
 
 	<div class="learn-more">
 	  <div class="container">
-			<h1> Sweepstakes Tables </h1>
+			<h1> TEST - Sweepstakes Tables </h1>
 			<script>
 			$(document).ready(letsgo());
 
@@ -78,7 +160,7 @@
 					
 					
 					<div class="thumbnail">
-					  <img src="https://media.giphy.com/media/9u19cy5OcNtYMn1Yo1/giphy.gif">
+					  <img src="https://media.giphy.com/media/1poXOr55fR2cYYaIlC/giphy.gif">
 					</div>
 				</div>
 				<div class="col-md-4">
