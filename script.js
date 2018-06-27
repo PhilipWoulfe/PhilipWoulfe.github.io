@@ -365,7 +365,7 @@ function getNextMatch(matchesObj, selectionsObj) {
 
 function getPredictedValue(team) {
 	var clone = Object.assign({}, matchesObjGlob);
-	clone[currentMatch].status = 'Completed';
+	clone[currentMatch].status = 'completed';
 	clone[currentMatch].winner = getWinner(team);
 	getActualResults(clone, selectionsObjGlob);
 }

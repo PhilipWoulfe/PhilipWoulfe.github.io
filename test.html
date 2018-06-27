@@ -49,34 +49,34 @@
 				loop1:
 				for (var g in groupObj) {
 
-					var anotherVar = parseInt(groupObj[g].group.teams[0].team.games_played);
+					var anotherVar = parseInt(groupObj[g].ordered_teams[0].games_played);
 					//console.log(groupObj);
-					if (parseInt(groupObj[g].group.teams[0].team.games_played) < 3)
+					if (parseInt(groupObj[g].ordered_teams[0].games_played) < 3)
 						continue;
-					if (parseInt(groupObj[g].group.teams[1].team.games_played) < 3)
+					if (parseInt(groupObj[g].ordered_teams[1].games_played) < 3)
 						continue;
-					if (parseInt(groupObj[g].group.teams[2].team.games_played) < 3)
+					if (parseInt(groupObj[g].ordered_teams[2].games_played) < 3)
 						continue;
-					if (parseInt(groupObj[g].group.teams[3].team.games_played) < 3)
+					if (parseInt(groupObj[g].ordered_teams[3].games_played) < 3)
 						continue;
 					
 
 					for ( var group in keys) {
 						
-						var a = groupObj[g].group.letter ;
-						var b = keys[group];
-						var c = groupObj[g].group.teams[0].team.country;
-						var d = selectionsObj[s].groupResults[keys[group]];
-						var e = groupObj[g].group.teams[1].team.country;
-						var f = selectionsObj[s].groupResults[keys[group]];
+						<!-- var a = groupObj[g].group.letter ; -->
+						<!-- var b = keys[group]; -->
+						<!-- var c = groupObj[g].group.teams[0].team.country; -->
+						<!-- var d = selectionsObj[s].groupResults[keys[group]]; -->
+						<!-- var e = groupObj[g].group.teams[1].team.country; -->
+						<!-- var f = selectionsObj[s].groupResults[keys[group]]; -->
 						
 						if (groupObj[g].group.letter != keys[group] )
 							continue;
 						
-						if ( groupObj[g].group.letter == keys[group] && groupObj[g].group.teams[0].team.country == selectionsObj[s].groupResults[keys[group]])
+						if ( groupObj[g].group.letter == keys[group] && groupObj[g].ordered_teams[0].country == selectionsObj[s].groupResults[keys[group]])
 							resultArr[s].score += POINTS_FOR_GROUP_WIN;
 							// res2[s].score += POINTS_FOR_GROUP_WIN;
-						if ( groupObj[g].group.letter == keys[group] && groupObj[g].group.teams[1].team.country == selectionsObj[s].groupResults[keys[group]])
+						if ( groupObj[g].group.letter == keys[group] && groupObj[g].ordered_teams[1].country == selectionsObj[s].groupResults[keys[group]])
 							// res2[s].score += POINTS_FOR_GROUP_SEC;
 							resultArr[s].score += POINTS_FOR_GROUP_SEC;
 						
