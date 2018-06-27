@@ -70,13 +70,13 @@
 						<!-- var e = groupObj[g].group.teams[1].team.country; -->
 						<!-- var f = selectionsObj[s].groupResults[keys[group]]; -->
 						
-						if (groupObj[g].group.letter != keys[group] )
+						if (groupObj[g].letter != keys[group] )
 							continue;
 						
-						if ( groupObj[g].group.letter == keys[group] && groupObj[g].ordered_teams[0].country == selectionsObj[s].groupResults[keys[group]])
+						if ( groupObj[g].letter == keys[group] && groupObj[g].ordered_teams[0].country == selectionsObj[s].groupResults[keys[group]])
 							resultArr[s].score += POINTS_FOR_GROUP_WIN;
 							// res2[s].score += POINTS_FOR_GROUP_WIN;
-						if ( groupObj[g].group.letter == keys[group] && groupObj[g].ordered_teams[1].country == selectionsObj[s].groupResults[keys[group]])
+						if ( groupObj[g].letter == keys[group] && groupObj[g].ordered_teams[1].country == selectionsObj[s].groupResults[keys[group]])
 							// res2[s].score += POINTS_FOR_GROUP_SEC;
 							resultArr[s].score += POINTS_FOR_GROUP_SEC;
 						
