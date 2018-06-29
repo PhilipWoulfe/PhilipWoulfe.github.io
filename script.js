@@ -2,8 +2,8 @@
 var selectionJSON = './selections.json';
 var resultsJson = 'https://world-cup-json.herokuapp.com/matches';
 // var resultsJson = 'https://api.myjson.com/bins/f8da6';
-var groupJson = 'https://worldcup.sfg.io/teams/group_results'
-// var groupJson = 'https://api.myjson.com/bins/ya8n2';
+// var groupJson = 'https://worldcup.sfg.io/teams/group_results'
+var groupJson = 'https://api.myjson.com/bins/123hzy';
 
 var matchesObjGlob;
 var selectionsObjGlob;
