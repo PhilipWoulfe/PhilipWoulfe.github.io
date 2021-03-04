@@ -15,18 +15,18 @@
 		--></style>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<!-- <script> -->
-    	<!-- function days() { -->
-			<!-- var d1 = new Date('1945', '4', '7'); -->
-			<!-- var d2 = new Date(); -->
-			<!-- d2.setHours(0, 0, 0, 0); -->
-			<!-- return Math.round((d2-d1)/(1000*60*60*24)) -->
-		<!-- } -->
+	<script>
+    	function days() {
+			var d1 = new Date('1945', '4', '7');
+			var d2 = new Date();
+			d2.setHours(0, 0, 0, 0);
+			return Math.round((d2-d1)/(1000*60*60*24))
+		}
 
-		<!-- $(document).ready( function() { -->
-			<!-- $(".content").text("it has been " + days() + " days since Germany was last seriously up to something."); -->
-		<!-- }); -->
-	<!-- </script> -->
+		$(document).ready( function() {
+			$(".content").text("it has been " + days() + " days since Germany was last seriously up to something.");
+		});
+	</script>
 </head>
 
 <body bgcolor="#ffffff">
@@ -34,12 +34,11 @@
 	<div id="upper">
 		<div id="content">
 			<div>
-			<!-- <span class="big">NO</span> -->
-			<p style="marg
+			<span class="big">NO</span>
+			<p style="margin-top: 4px;">Our sources have confirmed that Germany is indeed not up to something.</p>
 			</div>
 			<div style="font-style: italic; font-size: 12px; margin-top: 20px;">
-				<p>Damien Christie is a ballbag, i should know...</p>
-				<p>- Philip Woulfe</p>
+				<p id="main" class="content"></p>
 			</div>
 
 		</div>
