@@ -6,7 +6,34 @@ $raceResultsRow = $raceInputCsv[0]
 
 $raceInputArray = @()
 for($x=0;$x -le (($raceInputCsv.Name).Count); $x++){
-    $raceInputArray += $raceInputCsv[($x +1)]
+    $raceInputArray += $raceInputCsv[($x+1)]
+}
+
+$tracks = @{
+    'Race1' = 'AUS'
+    'Race2' = 'CHN'
+    'Race3' = 'JAP'
+    'Race4' = 'BAH'
+    'Race5' = 'SAU'
+    'Race6' = 'MIA'
+    'Race7' = 'EmR'
+    'Race8' = 'MON'
+    'Race9' = 'SPN'
+    'Race10' = "CAN"
+    'Race11' = 'AUT'
+    'Race12' = 'GBR'
+    'Race13' = 'BEL'
+    'Race14' = 'HUN'
+    'Race15' = 'NLD'
+    'Race16' = 'MZA'
+    'Race17' = 'AZE'
+    'Race18' = 'SGP'
+    'Race19' = 'TEX'
+    'Race20' = 'MEX'
+    'Race21' = 'BRA'
+    'Race22' = 'LAS'
+    'Race23' = 'QAT'
+    'Race24' = 'ABU'
 }
 
 $data = @()
