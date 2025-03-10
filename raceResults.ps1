@@ -96,7 +96,8 @@ for($r=1; $r -le $tracks.Count; $r++){
 
 Write-Host "`nLeaderboard:"
 
-$data | Sort-Object -Property Points -Descending | Format-Table * 
+$data | Sort-Object -Property Points -Descending | Format-Table *
+$data | Sort-Object -Property Points -Descending | Export-Csv .\CurrentStanding.csv -NoTypeInformation -Force 
 
 if(($checkBonus -contains "") -or ($raceResultsRow.'Race24-1' -contains "") ){
     $calcBonus = $false
@@ -123,4 +124,5 @@ if($calcBonus){
 if($calcBonus){
     Write-Host "`nLeaderboard with bonus points:"
     $data | Sort-Object -Property Total -Descending | Format-Table * 
+    $data | Sort-Object -Property Total -Descending | Export-Csv .\CurrentStanding.csv -NoTypeInformation -Force
     }
