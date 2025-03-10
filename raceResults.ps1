@@ -124,5 +124,5 @@ if($calcBonus){
 if($calcBonus){
     Write-Host "`nLeaderboard with bonus points:"
     $data | Sort-Object -Property Total -Descending | Format-Table * 
-    $data | Sort-Object -Property Total -Descending | Export-Csv .\CurrentStanding.csv -NoTypeInformation -Force
+    $data | Sort-Object -Property Total -Descending | Export-Csv .\CurrentStandingWithBonus.csv -NoTypeInformation -Force
     }
