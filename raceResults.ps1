@@ -1,6 +1,8 @@
 $raceInputCsv = Import-Csv .\races.csv
 $bonusInput = Import-csv .\bonus.csv
-$checkBonus =  $bonusInput.Answer
+$bonusAnswers = Import-csv .\bonusAnswers.csv
+
+$checkBonus =  $bonusAnswers.Answer
 
 $raceResultsRow = $raceInputCsv[0]
 
@@ -88,18 +90,16 @@ for($r=1; $r -le $tracks.Count; $r++){
         }
         [int]$data[($p)].Points += $playerRaceScore
 
-        if($data.Name -contains $data[$p].Name){
-             $data[($p)].($tracks.$raceNo) = $playerRaceScore
-         }
+        $data[($p)].($tracks.$raceNo) = $playerRaceScore
     }
 }
 
 Write-Host "`nLeaderboard:"
 
 $data | Sort-Object -Property Points -Descending | Format-Table *
-$data | Sort-Object -Property Points -Descending | Export-Csv .\CurrentStanding.csv -NoTypeInformation -Force 
+$data | Sort-Object -Property Points -Descending | Export-Csv .\Leaderboard.csv -NoTypeInformation -Force 
 
-if(($checkBonus -contains "") -or ($raceResultsRow.'Race24-1' -contains "") ){
+if(($checkBonus -contains "") -or ($raceResultsRow.'Race24-1' -eq "") ){
     $calcBonus = $false
 } else {
     $calcBonus = $true
@@ -112,17 +112,16 @@ if($calcBonus){
         for($q=0;$q -lt (($bonusInput.Question).Count);$q++){
             $pn = $data[$b].Name
 
-            if($bonusInput[$q].$pn -eq $bonusInput[$q].Answer){
+            if($bonusInput[$q].$pn -eq $bonusAnswers[$q].Answer){
                 $playerBonus += 0.05
             }
         }
         $data[$b].PSQP = $playerBonus
         $data[$b].Total = $data[$b].Points + ($data[$b].PSQP * $data[$b].Points)
     }
-}
 
-if($calcBonus){
     Write-Host "`nLeaderboard with bonus points:"
     $data | Sort-Object -Property Total -Descending | Format-Table * 
-    $data | Sort-Object -Property Total -Descending | Export-Csv .\CurrentStandingWithBonus.csv -NoTypeInformation -Force
-    }
+    $data | Sort-Object -Property Total -Descending | Export-Csv .\LeaderboardWithBonus.csv -NoTypeInformation -Force
+
+}
