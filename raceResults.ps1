@@ -55,6 +55,7 @@ for($r=1; $r -le $tracks.Count; $r++){
     $first = "-1"
     $second = "-2"
     $third = "-3"
+    $dnfStr = "-DNF"
 
     $resultArray = @()
     $resultArray += $raceResultsRow.($raceNo + $first), $raceResultsRow.($raceNo + $second), $raceResultsRow.($raceNo + $third)
@@ -67,7 +68,8 @@ for($r=1; $r -le $tracks.Count; $r++){
                 [pscustomobject]@{Name=$data[$p].Name;
                                     First=$raceInputArray[$p].($raceNo + $first);
                                     Second=$raceInputArray[$p].($raceNo + $second);
-                                    Third=$raceInputArray[$p].($raceNo + $third);}
+                                    Third=$raceInputArray[$p].($raceNo + $third);
+                                    DNF=$raceInputArray[$p].($raceNo + $dnfStr)}
                 )
         }
 
@@ -81,13 +83,17 @@ for($r=1; $r -le $tracks.Count; $r++){
 
         $playerRaceScore = 0
 
-        for($q = 0;$q -lt $resultArray.Count; $q++){
+        for($q = 0;$q -le 2; $q++){
             if($resultArray[$q] -eq $playerArray[$q]){
                 $playerRaceScore += 10
             }elseif ($playerArray -contains $resultArray[$q]) {
                 $playerRaceScore += 5
             }
         }
+        if(($raceResultsRow.($raceNo + $dnfStr)) -match ($raceInputArray[$p].($raceNo + $dnfStr))){
+            $playerRaceScore += 5
+        }
+
         [int]$data[($p)].Points += $playerRaceScore
 
         $data[($p)].($tracks.$raceNo) = $playerRaceScore
@@ -123,5 +129,4 @@ if($calcBonus){
     Write-Host "`nLeaderboard with bonus points:"
     $data | Sort-Object -Property Total -Descending | Format-Table * 
     $data | Sort-Object -Property Total -Descending | Export-Csv .\LeaderboardWithBonus.csv -NoTypeInformation -Force
-
 }
