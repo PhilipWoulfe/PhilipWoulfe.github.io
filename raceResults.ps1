@@ -61,7 +61,6 @@ for($r=1; $r -le $tracks.Count; $r++){
     $resultArray += $raceResultsRow.($raceNo + $first), $raceResultsRow.($raceNo + $second), $raceResultsRow.($raceNo + $third)
 
     if($resultArray -contains ""){
-        Write-Host "`nPlayer Selection for" $tracks.$raceNo
         $playerRaceSelection = @()
         for($p=0; $p -lt ($data.Name).Count; $p++){
             $playerRaceSelection += @(
@@ -73,7 +72,16 @@ for($r=1; $r -le $tracks.Count; $r++){
                 )
         }
 
+        $stewards = @()
+        do {
+            $stewards = Get-Random -Count 2 $data.Name
+        } while (
+            (($stewards -contains "DayaraY") -or ($stewards -contains "PhilW"))
+        )
+        
+        Write-Host "`nPlayer Selection for" $tracks.$raceNo
         $playerRaceSelection | Format-Table
+        Write-Host "The race stewards are" $stewards[0] "and" $stewards[1]
         break
     }
 
