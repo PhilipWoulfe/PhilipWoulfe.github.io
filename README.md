@@ -34,6 +34,12 @@
 
 5. Question 13, This will be based on the position of Norris at the end of the first lap of the race, starting the second lap of the race.
 
+6. Question on line 4 will be considered to be false if Doohan takes part in any P1, P2, P3, Q, SQ, Race or Sprint race after Round 6 (Miami) for Alpine F1 Team and true otherwise.
+
+7. For question on line 3, this will count if the race is cancelled due to rain. If the race is not cancelled, it requires the FIA to declare the race a wet race before it starts. If the race is declared a wet race and the first lap of green flag racing takes place more than 30 minutes after the scheduled start time, this question will considered to be true.
+
+8. Question 14 refers to George Russells FIA classification for each GP.
+
 ## F1 Competition Rules To Be Made Up As We Go Along
 
 TBC, of course.

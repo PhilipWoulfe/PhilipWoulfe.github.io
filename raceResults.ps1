@@ -72,16 +72,13 @@ for($r=1; $r -le $tracks.Count; $r++){
                 )
         }
 
-        $stewards = @()
-        do {
-            $stewards = Get-Random -Count 2 $data.Name
-        } while (
-            (($stewards -contains "DayaraY") -or ($stewards -contains "PhilW"))
-        )
-        
+
+        #$stewards = @()
+        #$stewards = Get-Random -Count 2 $data.Name
+            
         Write-Host "`nPlayer Selection for" $tracks.$raceNo
         $playerRaceSelection | Format-Table
-        Write-Host "The race stewards are" $stewards[0] "and" $stewards[1]
+        #Write-Host "The race stewards are" $stewards[0] "and" $stewards[1]
         break
     }
 
