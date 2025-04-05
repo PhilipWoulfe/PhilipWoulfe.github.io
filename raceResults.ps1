@@ -56,6 +56,8 @@ for($r=1; $r -le $tracks.Count; $r++){
     $second = "-2"
     $third = "-3"
     $dnfStr = "-DNF"
+    $raceBonusQuestion = "-BQ"
+    $preQualySelection = "-PQ"
 
     $resultArray = @()
     $resultArray += $raceResultsRow.($raceNo + $first), $raceResultsRow.($raceNo + $second), $raceResultsRow.($raceNo + $third)
@@ -65,10 +67,12 @@ for($r=1; $r -le $tracks.Count; $r++){
         for($p=0; $p -lt ($data.Name).Count; $p++){
             $playerRaceSelection += @(
                 [pscustomobject]@{Name=$data[$p].Name;
+                                    PreQualy=$raceInputArray[$p].($raceNo + $preQualySelection);
                                     First=$raceInputArray[$p].($raceNo + $first);
                                     Second=$raceInputArray[$p].($raceNo + $second);
                                     Third=$raceInputArray[$p].($raceNo + $third);
-                                    DNF=$raceInputArray[$p].($raceNo + $dnfStr)}
+                                    DNF=$raceInputArray[$p].($raceNo + $dnfStr);
+                                    BonusQ=$raceInputArray[$p].($raceNo + $raceBonusQuestion)}
                 )
         }
 
@@ -90,13 +94,30 @@ for($r=1; $r -le $tracks.Count; $r++){
 
         for($q = 0;$q -le 2; $q++){
             if($resultArray[$q] -eq $playerArray[$q]){
-                $playerRaceScore += 10
+                if(($raceResultsRow.($raceNo + $preQualySelection)) -eq "Yes"){
+                    $playerRaceScore += 15
+                }
+                else {
+                    $playerRaceScore += 10
+                }                
             }elseif ($playerArray -contains $resultArray[$q]) {
-                $playerRaceScore += 5
+                if(($raceResultsRow.($raceNo + $preQualySelection)) -eq "Yes"){
+                    $playerRaceScore += 7.5
+                }
+                else {
+                    $playerRaceScore += 5
+                } 
             }
         }
         if(($raceResultsRow.($raceNo + $dnfStr)) -match ($raceInputArray[$p].($raceNo + $dnfStr))){
             $playerRaceScore += 5
+        }
+
+        if(($raceResultsRow.($raceNo + $raceBonusQuestion)) -ne "NA") {
+            if(($raceResultsRow.($raceNo + $raceBonusQuestion)) -match ($raceInputArray[$p].($raceNo + $raceBonusQuestion))){
+                            $playerRaceScore += 5
+            
+             }
         }
 
         [int]$data[($p)].Points += $playerRaceScore
