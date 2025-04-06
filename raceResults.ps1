@@ -75,8 +75,6 @@ for($r=1; $r -le $tracks.Count; $r++){
                                     BonusQ=$raceInputArray[$p].($raceNo + $raceBonusQuestion)}
                 )
         }
-
-
         #$stewards = @()
         #$stewards = Get-Random -Count 2 $data.Name
             
@@ -94,14 +92,14 @@ for($r=1; $r -le $tracks.Count; $r++){
 
         for($q = 0;$q -le 2; $q++){
             if($resultArray[$q] -eq $playerArray[$q]){
-                if(($raceResultsRow.($raceNo + $preQualySelection)) -eq "Yes"){
+                if(($raceInputArray[$p].($raceNo + $preQualySelection)) -match "Yes"){
                     $playerRaceScore += 15
                 }
                 else {
                     $playerRaceScore += 10
                 }                
             }elseif ($playerArray -contains $resultArray[$q]) {
-                if(($raceResultsRow.($raceNo + $preQualySelection)) -eq "Yes"){
+                if(($raceInputArray[$p].($raceNo + $preQualySelection)) -eq "Yes"){
                     $playerRaceScore += 7.5
                 }
                 else {
@@ -120,7 +118,7 @@ for($r=1; $r -le $tracks.Count; $r++){
              }
         }
 
-        [int]$data[($p)].Points += $playerRaceScore
+        [double]$data[($p)].Points += $playerRaceScore
 
         $data[($p)].($tracks.$raceNo) = $playerRaceScore
     }
