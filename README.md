@@ -1,45 +1,100 @@
-# F1 Competition Rules
+# F1 Leaderboard
 
-## Main Competition Rules
+This project is a web application that displays the Formula 1 2024 championship standings with a responsive, interactive leaderboard that works on both desktop and mobile devices.
 
-1. Pre-Season Questions Bonus is applied to a players total race points after Abu Dhabi GP. 
+## Project Structure
 
-2. Answers to the Pre Season Questions will be determined by the admins ( David and Steven ) based on the results of each race, these will be shared before we apply the bonus points to ensure consensus. 
+```
+f1-leaderboard
+├── assets
+│   ├── css
+│   │   ├── main.css
+│   │   ├── table.css
+│   │   └── layout.css
+│   ├── images
+│   │   ├── f1-logo-placeholder.png (120px × 40px)
+│   │   ├── f1-hero-placeholder.jpg (1920px × 800px)
+│   │   └── driver-placeholder.png (200px × 200px)
+│   └── js
+│       ├── leaderboard.js
+│       └── site.js
+├── data
+│   └── Leaderboard.csv
+├── index.html
+├── .gitignore
+└── README.md
+```
 
-3. Each players race selection should be provided no later than 30 minutes before the scheduled start time of each race, if not provided, the players selection from the previous race will be applied. If not provided for the first race, drivers that qualify in 4th, 5th and 6th will be used as podium selection and 1st position will be used as DNF selection. All players selections will be shared before the start of each race. 
+## Features
 
-    3a: Earlier submission of race selections may be required where the race start time in UTC is deemed "Too early for this craic". Players will be notified prior to GP qualification if this rule applies. 
+- **Responsive Design:** Fully responsive website that works well on desktop and mobile devices
+- **Interactive Leaderboard:** Sort by any column by clicking column headers
+- **Frozen First Column:** Driver names remain visible when scrolling horizontally through race results 
+- **Mobile Optimization:** Table adapts for smaller screens with toggle view options
+- **Dynamic Data:** Reads data from a CSV file for easy updates
+- **Modern UI:** Formula 1 themed design with hero section, stats cards, and footer
+- **Alpha Feature Tags:** Clear indicators of features still in development
 
-4. Results will be based on the finishing position of drivers at the end of each race, however, if final results are later revised by FIA due to DSQ, Penalty etc, Results will be updated to match the new finishing positions.
+## Setup Instructions
 
-5. In the event a race is cancelled, there will be no points distributed for that weekend.
+1. Clone the repository:
+   ```
+   git clone <repository-url>
+   ```
 
-6. If two or more players are tied for any of the prize awarding positions in the leaderboard, the FIA countback procedure will be completed to compare each players results over the entire season to determine the final finishing position of each player. If still even after countback, prize will be split.
+2. Navigate to the project directory:
+   ```
+   cd f1-leaderboard
+   ```
 
-7. Players selections for each race should be in the format "1st, 2nd, 3rd, DNF" e.g. "PIA, VER, HAM, RUS", other variations, including either a drivers full name, first name, surname are acceptable, provided it uniquely identifies that driver and it is clear what classification the player intended. "None" is also a valid selection for DNF and is awarded the same points as a correct DNF if no driver is classified as DNF.
+3. Open `index.html` in your web browser to view the leaderboard.
 
-8. There may be stewards randomly assigned from the pool of players for each race to answer any further questions pertaining to that race.
+## How to Run the Application
 
-9. In the event of the untimely demise of any of the players, while unfortunate, of course, their entry fee is considered forfeit to the competition prize fund and shall not be redeemed by any beneficiaries. Their finishing position in the competition is also forfeit and those players who scored less but who had the good manners not to demise themselves, move up a position.
+Simply open the `index.html` file in a web browser. The application will automatically fetch the data from `data/Leaderboard.csv` and display the results in a formatted table.
 
-## F1 Pre-Season Questions Clarifications & Addendums.
+## Technologies Used
 
-1. The term "races" only applies to F1 GP races, sprint races are excluded from all consideration.
+- HTML5
+- CSS3 (with responsive design principles)
+- JavaScript (ES6+)
+- CSV for data storage
 
-2. Question 7, as per FIA, provided it is mathematically possible for the WCC or WDC to change from the results of the final race, however unlikely, it is considered undecided.
+## Key Components
 
-3. Question 11, while “races” have not been specified here, this question only applies to final classification in GP races.
+- **Sorting Functionality:** Click on any column header to sort the table
+- **Responsive Table:** Horizontal scrolling with fixed first column
+- **Toggle View:** Switch between full table and compact view on mobile
+- **Modern UI Elements:** Interactive components with hover effects
+- **Performance Optimized:** Lightweight design for fast loading
 
-4. Question 12, replacement is counted provided it is for the remainder of the season, a replacement for one or more race in the event of illness, race ban etc does not count. This also applies to the final race of the season, for example, the final race of 2024, Ocon for Alpine, this would be considered a replacement. 
+## Known Issues
 
-5. Question 13, This will be based on the position of Norris at the end of the first lap of the race, starting the second lap of the race.
+- Some features are still in alpha development (marked with alpha tags)
+- If images don't appear, ensure the correct directory structure is maintained
+- David Jordan was supposed to implement performance analytics, video highlights, and community discussion features, but he mysteriously "forgot" to do so. Classic David.
 
-6. Question on line 4 will be considered to be false if Doohan takes part in any P1, P2, P3, Q, SQ, Race or Sprint race after Round 6 (Miami) for Alpine F1 Team and true otherwise.
+## Data Structure
 
-7. For question on line 3, this will count if the race is cancelled due to rain. If the race is not cancelled, it requires the FIA to declare the race a wet race before it starts. If the race is declared a wet race and the first lap of green flag racing takes place more than 30 minutes after the scheduled start time, this question will considered to be true.
+The leaderboard data should be in CSV format with:
+- First row: Column headers
+- Second row: Data to be skipped (as implemented in the parsing logic)
+- Remaining rows: Driver data with race results and points
 
-8. Question 14 refers to George Russells FIA classification for each GP.
+## Contributing
 
-## F1 Competition Rules To Be Made Up As We Go Along
+Feel free to submit issues or pull requests if you have suggestions or improvements for the project. Unless you're David Jordan, in which case please submit your code for thorough review first, given your track record with "forgetting" features.
 
-TBC, of course.
+## Future Enhancements
+
+- Team standings section
+- Race calendar with upcoming events
+- Driver profiles with statistics
+- Dark mode toggle
+- Custom sorting preferences
+- Data visualization of race performance
+- All those features David Jordan promised but never delivered
+
+## License
+
+This project is available for use under standard open-source terms. Just don't blame us for David Jordan's shortcomings.
