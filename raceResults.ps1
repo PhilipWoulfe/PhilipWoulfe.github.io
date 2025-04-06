@@ -46,7 +46,7 @@ for($init=0;$init -lt (($raceInputArray.Name).Count); $init++){
                         $tracks.Race6="";$tracks.Race7="";$tracks.Race8="";$tracks.Race9="";$tracks.Race10="";$tracks.Race11="";
                         $tracks.Race12="";$tracks.Race13="";$tracks.Race14="";$tracks.Race15="";$tracks.Race16="";$tracks.Race17="";
                         $tracks.Race18="";$tracks.Race19="";$tracks.Race20="";$tracks.Race21="";$tracks.Race22="";$tracks.Race23="";
-                        $tracks.Race24="";PSQP="";Points="";Total="";}
+                        $tracks.Race24="";CDP="";PSQP="";Points="";Total="";}
     )
 }
 
@@ -89,9 +89,10 @@ for($r=1; $r -le $tracks.Count; $r++){
         $playerArray += $raceInputArray[$p].($raceNo + $first), $raceInputArray[$p].($raceNo + $second), $raceInputArray[$p].($raceNo + $third)
 
         $playerRaceScore = 0
-
+        $playerCorrectAnswer = 0
         for($q = 0;$q -le 2; $q++){
             if($resultArray[$q] -eq $playerArray[$q]){
+                $playerCorrectAnswer += 1
                 if(($raceInputArray[$p].($raceNo + $preQualySelection)) -match "Yes"){
                     $playerRaceScore += 15
                 }
@@ -119,6 +120,7 @@ for($r=1; $r -le $tracks.Count; $r++){
         }
 
         [double]$data[($p)].Points += $playerRaceScore
+        [int]$data[($p)].CDP += $playerCorrectAnswer
 
         $data[($p)].($tracks.$raceNo) = $playerRaceScore
     }
@@ -126,7 +128,7 @@ for($r=1; $r -le $tracks.Count; $r++){
 
 Write-Host "`nLeaderboard:"
 
-$data | Sort-Object -Property Points -Descending | Format-Table *
+$data | Sort-Object -Property Points, CDP -Descending | Format-Table *
 $data | Sort-Object -Property Points -Descending | Export-Csv .\Leaderboard.csv -NoTypeInformation -Force 
 
 if(($checkBonus -contains "") -or ($raceResultsRow.'Race24-1' -eq "") ){
@@ -151,6 +153,6 @@ if($calcBonus){
     }
 
     Write-Host "`nLeaderboard with bonus points:"
-    $data | Sort-Object -Property Total -Descending | Format-Table * 
-    $data | Sort-Object -Property Total -Descending | Export-Csv .\LeaderboardWithBonus.csv -NoTypeInformation -Force
+    $data | Sort-Object -Property Total, CDP -Descending | Format-Table * 
+    $data | Sort-Object -Property Total, CDP -Descending | Export-Csv .\LeaderboardWithBonus.csv -NoTypeInformation -Force
 }
